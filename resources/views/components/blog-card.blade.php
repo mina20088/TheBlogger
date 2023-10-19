@@ -12,9 +12,7 @@
         <div class="flex justify-between items-center">
             <p class="text-gray-600 basis-1/2">{{  $post->created_at }}</p>
 
-            <x-category_button  class="bg-sky-400 text-white">
-                category
-            </x-category_button>
+            <x-category_button  :category="$post->category"/>
         </div>
         <div class="flex flex-col mt-4">
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post->excrept }}</p>
