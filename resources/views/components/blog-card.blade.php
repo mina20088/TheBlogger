@@ -5,13 +5,16 @@
         <img class="w-full h-40 sm:h-48 lg:h-56 object-cover" src="{{asset('images/placeholder.png')}}" alt="" />
     </a>
     <div class="p-5">
-        <a href="#">by: <span class="text-blue-600">mina remon</span></a>
+        <a href="#">by: <span class="text-blue-600">{{ $post->user->username }}</span></a>
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
         </a>
         <div class="flex justify-between items-center">
             <p class="text-gray-600 basis-1/2">{{  $post->created_at }}</p>
-            <a class="flex basis-1/2 justify-end" href="#"><span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-6 py-2 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</span></a>
+
+            <x-category_button  class="bg-sky-400 text-white">
+                category
+            </x-category_button>
         </div>
         <div class="flex flex-col mt-4">
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post->excrept }}</p>
