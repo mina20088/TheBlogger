@@ -7,13 +7,18 @@
     @vite('resources/js/app.js')
     <title>Blogger</title>
 </head>
-<body>
-<x-navigation/>
+<body class="{{ Route::currentRouteName() == 'login.create' ? 'bg-amber-50' : 'bg-white' }}">
 
-<div class="p-20">
+<header>
+    <x-navigation/>
+</header>
+
+
+<main class="p-20">
     {{ $slot }}
-</div>
+</main>
 
+<x-footter/>
 </body>
 </html>
 

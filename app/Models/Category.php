@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @method static truncate()
+ * @method get()
  */
 class Category extends Model
 {
