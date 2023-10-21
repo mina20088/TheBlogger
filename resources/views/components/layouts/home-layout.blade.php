@@ -7,7 +7,7 @@
     @vite('resources/js/app.js')
     <title>Blogger</title>
 </head>
-<body class="{{ Route::currentRouteName() == 'login.create' ? 'bg-amber-50' : 'bg-white' }}">
+<body class="">
 
 <header>
     <x-navigation/>

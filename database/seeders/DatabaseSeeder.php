@@ -38,13 +38,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $mina =  User::factory()->create([
-            'name' => 'mina remon shaker',
+            'first_name' => 'mina',
+            'last_name' =>'shaker',
             'username' => 'mina200888',
             'email' => 'minakiroollos@gmail.com'
         ]);
 
         $beshoy =  User::factory()->create([
-            'name' => 'beshoy remon shaker',
+            'first_name' => 'beshoy',
+            'last_name' => 'shaker',
             'username' => 'besho',
             'email' => 'besho@gmail.com'
         ]);

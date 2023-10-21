@@ -9,7 +9,7 @@
         </div>
         <div class="hidden md:flex space-x-4">
             <a href="{{ route('login.create') }}" class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Login</a>
-            <a href="#" class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Register</a>
+            <a href="{{ route('register.create') }}" class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Register</a>
         </div>
         <!-- Mobile menu button (hidden on larger screens) -->
         <div class="md:hidden">
