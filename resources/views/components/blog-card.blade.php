@@ -1,7 +1,7 @@
 @props(['post'])
 <div class ='bg-white shadow-lg rounded-lg sm:max-w-full md:max-w-screen-lg relative md:h-[36rem]'>
     <a href="#">
-        <img class="w-full h-40 sm:h-48 lg:h-56 object-cover" src="{{asset('images/placeholder.png')}}" alt="" />
+        <img class="w-full h-40 sm:h-48 lg:h-56 object-cover" src="{{ Vite::asset('resources/images/placeholder.png') }}" alt="" />
     </a>
     <div class="p-5">
         <a href="{{route('user.index',$post->user->username)}}">by: <span class="text-blue-600">{{ $post->user->username }}</span></a>

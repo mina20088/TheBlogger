@@ -6,7 +6,7 @@
     <div class="grid grid-cols-3 max-lg:grid-cols-1 h-screen">
 
         <div class="mt-8 p-4 col-span-1">
-            <img class="w-full" src="{{ asset('images/placeholder.png') }}">
+            <img class="w-full" src="{{ Vite::asset('resources/images/placeholder.png') }}">
         </div>
         <!-- Main Content -->
         <div class="container mx-auto mt-8 bg-white p-4 rounded-lg shadow-lg col-span-2">

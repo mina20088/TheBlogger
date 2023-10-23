@@ -1,6 +1,6 @@
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="{{ route('home.index') }}" class="text-white text-2xl font-bold"><img src="{{ asset('images/logo(1)(1).png') }}" width="200" height="67"></a>
+        <a href="{{ route('home.index') }}" class="text-white text-2xl font-bold"><img src="{{ Vite::asset('resources/images/logo.png')  }}" width="200" height="67"></a>
         <div class="hidden md:flex space-x-4">
             <a href="{{ route('home.index') }}" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Home</a>
             <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">About</a>
@@ -28,6 +28,5 @@
 
 <x-mobile-navigation/>
 
-<x-auth-model>
-    <x-login-form/>
-</x-auth-model>
+
+

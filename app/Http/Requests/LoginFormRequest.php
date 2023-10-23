@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class LoginFormRequest extends FormRequest
 {
+
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,5 +27,13 @@ class LoginFormRequest extends FormRequest
             'email' => "required|email|exists:users",
             'password' => "required|current_password:web"
         ];
+    }
+
+    public function messages(): array
+    {
+       return [
+           'required' => ':attribute required',
+           'exists' => ':attribute provided is not exists'
+       ];
     }
 }
