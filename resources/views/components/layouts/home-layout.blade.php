@@ -7,7 +7,7 @@
     @vite('resources/js/app.js')
     <title>Blogger</title>
 </head>
-<body class="">
+<body style="visibility: hidden;">
 
 <header>
     <x-navigation/>
@@ -20,6 +20,7 @@
 
 <x-footter/>
 </body>
+
 </html>
 
 

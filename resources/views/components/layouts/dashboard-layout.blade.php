@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/js/dashboard.js')
     <title>{{ $title }}</title>
-<body class="hold-transition sidebar-mini" id="body">
+<body class="hold-transition sidebar-mini" id="body" style="visibility: hidden;">
 <div class="wrapper">
 
 
