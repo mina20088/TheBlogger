@@ -37,4 +37,4 @@ Route::get('/register',[RegisterController::class,'create'])->name('register.cre
 
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
 
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->name('dashboard')->middleware('auth');

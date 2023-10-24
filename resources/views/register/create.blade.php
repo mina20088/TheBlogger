@@ -1,6 +1,5 @@
 <x-layouts.home-layout>
 
-
     <div class=" grid col-span-1 row-span-1 place-content-start">
         <h1 class="text-3xl text-center ">The Blogger Registration </h1>
     </div>

@@ -22,6 +22,7 @@
     <div class="content-wrapper">
 
 
+        <x-alerts/>
         <x-dashboard.dashboard-content-header :title="$title"/>
 
 
