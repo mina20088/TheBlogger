@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class HomeController extends Controller
 {

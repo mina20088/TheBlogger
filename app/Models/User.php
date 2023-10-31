@@ -34,7 +34,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -51,5 +50,25 @@ class User extends Authenticatable
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function activeLogins():HasMany
+    {
+        return $this->hasMany(ActiveLogin::class);
+    }
+
+    public function getRememberToken(): ?string
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value): void
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName(): string
+    {
+        return 'remember_token';
     }
 }

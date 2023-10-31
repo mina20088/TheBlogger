@@ -1,6 +1,7 @@
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="{{ route('home.index') }}" class="text-white text-2xl font-bold"><img src="{{ Vite::asset('resources/images/logo.png')  }}" width="200" height="67"></a>
+        <a href="{{ route('home.index') }}" class="text-white text-2xl font-bold"><img
+                src="{{ Vite::asset('resources/images/logo.png')  }}" width="200" height="67"></a>
         <div class="hidden md:flex space-x-4">
             <a href="{{ route('home.index') }}" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Home</a>
             <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">About</a>
@@ -8,8 +9,24 @@
             <a href="#" class="text-2xl max-lg:text-lg  text-white hover:text-blue-300">Contact</a>
         </div>
         <div class="hidden md:flex space-x-4">
-            <a href="{{ route('login.create') }}" class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Login</a>
-            <a href="{{ route('register.create') }}" class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Register</a>
+            @guest()
+                <a href="{{ route('login.create') }}"
+                   class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Login</a>
+                <a href="{{ route('register.create') }}"
+                   class="bg-white text-blue-500 hover:bg-blue-100 px-4 py-2 rounded-md">Register</a>
+            @endguest
+
+            @auth()
+                    <!--user avatar-menus-button-->
+                    <x-dashboard.dashboard-user-avatar-button class="text-white"/>
+                    <!-- Dropdown menu -->
+                    <x-dashboard.dashboard-user-dropdown>
+                        <x-dashboard-user-dropdown-items href="{{ route('dashboard') }}" />
+                        <x-dashboard-user-dropdown-items title="Profile" />
+                        <x-dashboard-user-dropdown-items title="Settings" />
+                    </x-dashboard.dashboard-user-dropdown>
+            @endauth
+
         </div>
         <!-- Mobile menu button (hidden on larger screens) -->
         <div class="md:hidden">
@@ -23,7 +40,6 @@
         </div>
     </div>
 </nav>
-
 
 
 <x-mobile-navigation/>

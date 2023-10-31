@@ -3,7 +3,7 @@
     'href' => '/'
 ])
 
-<a href="{{ route($href) }}" class="nav-link  text-white">
+<a href="{{ $href }}" class="nav-link  text-white">
     <i {{ $attributes->merge(['class'=> 'nav-icon']) }}></i>
     <p> {{ $title }}</p>
 </a>

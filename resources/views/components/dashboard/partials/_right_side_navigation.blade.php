@@ -17,7 +17,7 @@
         </div>
         <div class="flex max-sm:basis-full">
             <!--user avatar-menus-button-->
-            <x-dashboard.dashboard-user-avatar-button/>
+            <x-dashboard.dashboard-user-avatar-button class="text-gray-900"/>
             <!-- Dropdown menu -->
             <x-dashboard.dashboard-user-dropdown>
                 <x-dashboard-user-dropdown-items href="{{ route('dashboard') }}" />

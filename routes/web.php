@@ -1,13 +1,18 @@
 <?php
 
+use App\Http\Controllers\ActiveLoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PasswordRestController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
@@ -37,4 +44,23 @@ Route::get('/register',[RegisterController::class,'create'])->name('register.cre
 
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
 
-Route::get('/dashboard', DashboardController::class)->name('dashboard')->middleware('auth');
+Route::get('/forget_password',[PasswordRestController::class,'create'])->name('password-reset.create');
+
+Route::post('/forget_password',[PasswordRestController::class,'store'])->name('password-reset.store');
+
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/logout', LogoutController::class)->name('logout');
+
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    Route::get('/session/active',[SessionsController::class,'index'])->name('sessions.index');
+
+    Route::get('/session/logins',[ActiveLoginController::class,'index'])->name('active-login.index.index');
+
+});
+
+
+
+
+

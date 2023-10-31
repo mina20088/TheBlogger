@@ -4,7 +4,7 @@
 ])
 <li class="nav-item menu-open">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <i {{ $attributes->merge(['class' =>'nav-icon']) }}></i>
         <p>
             {{ $title }}
             <i class="right fas fa-angle-left"></i>

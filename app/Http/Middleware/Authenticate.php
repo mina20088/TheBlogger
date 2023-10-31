@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 
@@ -15,4 +16,6 @@ class Authenticate extends Middleware
         session()->flash('unauthenticated','you need to be logged in to access this page');
         return $request->expectsJson() ? null : route('login.store');
     }
+
+
 }

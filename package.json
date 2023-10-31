@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "build:mail": "vite build --config ./vite-email.config.js --watch"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.16",
@@ -15,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "admin-lte": "^3.2.0"
+        "admin-lte": "^3.2.0",
+        "datatables.net-dt": "^1.13.6"
     }
 }
