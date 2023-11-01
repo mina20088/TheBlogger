@@ -12,7 +12,7 @@ class LoginFormRequest extends FormRequest
 {
 
 
-    public bool $remember = false;
+    public bool $remember;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -43,10 +43,7 @@ class LoginFormRequest extends FormRequest
 
         $this->remember = $this->boolean('remember');
 
-        if(Auth::viaRemember())
-        {
-            $this->remember = true;
-        }
+
         $this->ensureIsNotRateLimited();
 
         if(!Auth::guard('web')->attempt($this->only('email','password'),$this->remember))

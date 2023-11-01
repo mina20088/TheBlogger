@@ -19,13 +19,21 @@ class LoginController extends Controller
     public function store(LoginFormRequest $request)
     {
 
+
+
         $request->authenticate();
 
-        if(!$request->remember)
+        if($request->remember)
         {
+            ActiveLogin::create([
+                'user_id' => $request->user()->id,
+                'session_id' =>  $request->session()->getId(),
+                'ip_address' =>  $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'status' => 1
+            ]);
             return redirect()->route('home.index')->with('success','Welcome Back ,' . $request->user()->username);
         }
-
 
         session()->regenerate();
 
