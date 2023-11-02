@@ -1,0 +1,149 @@
+{
+  "_jquery-0f9ea79a.js": {
+    "file": "assets/jquery-0f9ea79a.js"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400-e4299464.eot",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.eot"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400-a3b98177.svg",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.svg"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-cda59d6e.ttf",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400-f9217f66.woff",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.woff"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-8ea87917.woff2",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400-79d08806.eot",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.eot"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400-be0a0849.svg",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.svg"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-e8711bbb.ttf",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400-cb9e9e69.woff",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.woff"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-e42a8844.woff2",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900-373c04fd.eot",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.eot"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900-9674eb1b.svg",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.svg"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-af639750.ttf",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900-3f6d3488.woff",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff"
+  },
+  "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-9834b82a.woff2",
+    "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-321369c0.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/images/logo.png": {
+    "file": "assets/logo-abf6657f.png",
+    "src": "resources/images/logo.png"
+  },
+  "resources/images/message_7785677_3_.ico": {
+    "file": "assets/message_7785677_3_-19deca39.ico",
+    "src": "resources/images/message_7785677_3_.ico"
+  },
+  "resources/images/placeholder.png": {
+    "file": "assets/placeholder-79950fbf.png",
+    "src": "resources/images/placeholder.png"
+  },
+  "resources/images/profile-picture-1.jpg": {
+    "file": "assets/profile-picture-1-7062269f.jpg",
+    "src": "resources/images/profile-picture-1.jpg"
+  },
+  "resources/images/profile-picture-2.jpg": {
+    "file": "assets/profile-picture-2-8fd5caa2.jpg",
+    "src": "resources/images/profile-picture-2.jpg"
+  },
+  "resources/images/profile-picture-3.jpg": {
+    "file": "assets/profile-picture-3-e17e60da.jpg",
+    "src": "resources/images/profile-picture-3.jpg"
+  },
+  "resources/images/profile-picture-4.jpg": {
+    "file": "assets/profile-picture-4-03f55394.jpg",
+    "src": "resources/images/profile-picture-4.jpg"
+  },
+  "resources/images/profile-picture-5.jpg": {
+    "file": "assets/profile-picture-5-63b9ea41.jpg",
+    "src": "resources/images/profile-picture-5.jpg"
+  },
+  "resources/images/register.webp": {
+    "file": "assets/register-23485637.webp",
+    "src": "resources/images/register.webp"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-321369c0.css"
+    ],
+    "file": "assets/app-877108b8.js",
+    "imports": [
+      "_jquery-0f9ea79a.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/dashboard.css": {
+    "file": "assets/dashboard-b097de82.css",
+    "src": "resources/js/dashboard.css"
+  },
+  "resources/js/dashboard.js": {
+    "assets": [
+      "assets/fa-brands-400-e4299464.eot",
+      "assets/fa-brands-400-8ea87917.woff2",
+      "assets/fa-brands-400-f9217f66.woff",
+      "assets/fa-brands-400-cda59d6e.ttf",
+      "assets/fa-brands-400-a3b98177.svg",
+      "assets/fa-regular-400-79d08806.eot",
+      "assets/fa-regular-400-e42a8844.woff2",
+      "assets/fa-regular-400-cb9e9e69.woff",
+      "assets/fa-regular-400-e8711bbb.ttf",
+      "assets/fa-regular-400-be0a0849.svg",
+      "assets/fa-solid-900-373c04fd.eot",
+      "assets/fa-solid-900-9834b82a.woff2",
+      "assets/fa-solid-900-3f6d3488.woff",
+      "assets/fa-solid-900-af639750.ttf",
+      "assets/fa-solid-900-9674eb1b.svg"
+    ],
+    "css": [
+      "assets/dashboard-b097de82.css"
+    ],
+    "file": "assets/dashboard-3af170c0.js",
+    "imports": [
+      "_jquery-0f9ea79a.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/dashboard.js"
+  }
+}
