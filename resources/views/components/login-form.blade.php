@@ -1,4 +1,4 @@
-<form  {{ $attributes->merge(['class'=>'space-y-6 w-full md:w-9/12 lg:w-9/12 xl:w-5/12']) }} action="{{ route('login.store') }}" method="post">
+<form  {{ $attributes->merge(['class'=>'space-y-6 w-full max-sm:w-full md:w-9/12 lg:w-9/12 xl:w-5/12']) }} action="{{ route('login.store') }}" method="post">
     @csrf
     <div>
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
