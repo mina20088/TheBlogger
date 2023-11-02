@@ -15,7 +15,7 @@
 </header>
 
 
-<main class="{{ Route::currentRouteName() == 'login.create' || Route::currentRouteName() === 'register.create' ? 'p-[5.7rem] max-lg:p-0 ': 'p-20' }}">
+<main class="{{ Route::currentRouteName() == 'login.create' || Route::currentRouteName() === 'register.create' ? 'p-[5.7rem] max-lg:p-0': 'p-20' }}">
     {{ $slot }}
 </main>
 
