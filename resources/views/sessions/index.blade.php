@@ -2,7 +2,7 @@
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
-    <div class=" bg-white p-12">
+    <div class=" bg-white p-12 table-responsive">
         <table id="mytable" class=" table table-hover" style="width:100%">
             <thead>
             <tr>
