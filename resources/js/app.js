@@ -1,8 +1,8 @@
 import './bootstrap.js'
 import '../css/app.css'
-import 'flowbite';
 import.meta.glob(['../images/**'])
 import $ from 'jquery';
+import 'flowbite';
 
 // Helper function
 let domReady = (cb) => {
