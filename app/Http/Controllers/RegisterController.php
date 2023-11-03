@@ -7,6 +7,8 @@ use App\Mail\RegistrationWelcomeEmail;
 use App\Models\ActiveLogin;
 use App\Models\Session;
 use App\Models\User;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -21,7 +23,7 @@ class RegisterController extends Controller
     {
         $user = User::create($request->all());
 
-        \Mail::to($request->user())->send(new RegistrationWelcomeEmail($user));
+        event(new Registered($user));
 
         \Auth::login($user);
 
