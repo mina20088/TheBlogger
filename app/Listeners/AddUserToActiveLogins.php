@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\ActiveLogin;
+use App\Models\Session;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -25,7 +26,7 @@ class AddUserToActiveLogins
     {
         ActiveLogin::create([
             'user_id' => \Auth::user()->id,
-            'session_id' => \session()->getId(),
+            'session_id' => \Auth::getSession()->getId(),
             'ip_address' =>  request()->ip(),
             'user_agent' => request()->userAgent(),
             'status' => 1

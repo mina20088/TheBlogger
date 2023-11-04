@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -23,17 +24,9 @@ class RegisterController extends Controller
     {
         $user = User::create($request->all());
 
-        event(new Registered($user));
-
         \Auth::login($user);
 
-        ActiveLogin::create([
-            'user_id' => \Auth::user()->id,
-            'session_id' => \session()->getId(),
-            'ip_address' =>  $request->ip(),
-            'user_agent' => $request->userAgent(),
-            'status' => 1
-        ]);
+        event(new Registered($user),new Login('web',$user,false));
 
         return redirect()->route('dashboard')->with('success','Welcome Back ,' . $request->user('web')->username);
     }

@@ -18,12 +18,15 @@ class ActiveLogin extends Model
         'status'
     ];
 
-
     public function user() :BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    public function session(): BelongsTo
+    {
+        return $this->belongsTo(Session::class);
+    }
 
     protected function status(): Attribute
     {
