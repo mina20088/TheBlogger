@@ -3,15 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Notifications\SendRestEmailNotification;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notification;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -57,18 +61,15 @@ class User extends Authenticatable
         return $this->hasMany(ActiveLogin::class);
     }
 
-    public function getRememberToken(): ?string
+    public function sendPasswordResetNotification($token): void
     {
-        return $this->remember_token;
+        $this->notify(new SendRestEmailNotification($token));
     }
 
-    public function setRememberToken($value): void
+
+    public function routeNotificationForEmail(Notification $notification)
     {
-        $this->remember_token = $value;
+        return $this->email;
     }
 
-    public function getRememberTokenName(): string
-    {
-        return 'remember_token';
-    }
 }

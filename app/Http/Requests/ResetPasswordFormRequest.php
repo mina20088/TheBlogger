@@ -6,6 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ResetPasswordFormRequest extends FormRequest
 {
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         return [
@@ -13,8 +19,10 @@ class ResetPasswordFormRequest extends FormRequest
         ];
     }
 
-    public function authorize(): bool
+    public function messages(): array
     {
-        return true;
+        return [
+          'exists' => ':input is not exists i our database'
+        ];
     }
 }

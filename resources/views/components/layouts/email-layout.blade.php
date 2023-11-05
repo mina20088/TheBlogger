@@ -33,7 +33,6 @@
         <header style="margin-bottom:20px; margin-top:20px;  ">
             <a style="display:grid; justify-content:center;" href="#">
                 <img class="sm-h-8" src="{{ $message->embed(resource_path('images/logo.png')) }}" alt style="max-width: 100%; vertical-align: middle; line-height: 1; border: 0; height: auto; width: 256px">
-                {{--<img class="sm-h-8" src="{{ asset('logo.png') }}" alt style="max-width: 100%; vertical-align: middle; line-height: 1; border: 0; height: auto; width: 256px">--}}
             </a>
         </header>
         {{ $slot }}

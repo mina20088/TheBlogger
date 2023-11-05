@@ -13,6 +13,8 @@ class PasswordRestController extends Controller
 
     public function store(ResetPasswordFormRequest $request)
     {
+         $status = \Password::sendResetLink(['email'=> $request->only('email')]);
 
+         dd($status);
     }
 }

@@ -48,6 +48,10 @@ Route::get('/forget_password',[PasswordRestController::class,'create'])->name('p
 
 Route::post('/forget_password',[PasswordRestController::class,'store'])->name('password-reset.store');
 
+Route::get('/reset-password/{token}', function (string $token) {
+
+})->middleware('guest')->name('password.reset');
+
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/logout', LogoutController::class)->name('logout');

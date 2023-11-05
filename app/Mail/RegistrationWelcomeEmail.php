@@ -27,8 +27,6 @@
         public function envelope(): Envelope
         {
             return new Envelope(
-                to: $this->user->email,
-                subject: 'Registration Welcome Email'
             );
         }
 
@@ -39,9 +37,6 @@
         {
             return new Content(
                 view: 'emails.register_welcome',
-                with: [
-                    'username' => $this->user->username
-                ]
             );
         }
 
