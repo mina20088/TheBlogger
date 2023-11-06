@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ResetPasswordFormRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class PasswordRestController extends Controller
 {
@@ -13,8 +16,13 @@ class PasswordRestController extends Controller
 
     public function store(ResetPasswordFormRequest $request)
     {
-         $status = \Password::sendResetLink(['email'=> $request->only('email')]);
+        $status = \Password::sendResetLink(['email' => $request->only('email')]);
 
-         dd($status);
+
+        if ($status === Password::RESET_THROTTLED) {
+            return back()->with(['failed' => 'You Have To Create A New Token After ' . Carbon::parse(120)]);
+        }
+
+        return back()->with(['success' => 'Password Link Sent To Email ' . $request->input('email')]);
     }
 }

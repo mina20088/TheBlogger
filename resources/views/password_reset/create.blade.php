@@ -3,6 +3,7 @@
         {{$title}}
     </x-slot:title>
     <div class="grid grid-cols-1 place-items-center place-content-center h-[59.9vh]">
+        <x-alerts/>
         <div class=" w-full h-fit max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <form class="space-y-6" action="{{ route('password-reset.store') }}" method="post">
                 @csrf

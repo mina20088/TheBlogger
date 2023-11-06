@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http;
-
-use App\Http\Middleware\ActiveLogin;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckSessionTimeout;
 use App\Http\Middleware\EncryptCookies;

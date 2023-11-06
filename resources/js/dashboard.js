@@ -22,10 +22,10 @@ domReady(() => {
 });
 
 
-let table = new DataTable('#mytable',{
+ new DataTable('#mytable',{
     responsive:true
 })
 
-let activeLoginsTable =  new DataTable('#active',{
+  new DataTable('#active',{
     responsive:true
 })
