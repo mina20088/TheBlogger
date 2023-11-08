@@ -37,7 +37,7 @@ class SendRestEmailNotification extends Notification
     {
         return(new MailMessage())
             ->subject('Reset Password Email')
-            ->view('emails.reset_password',['token'=> $this->token]);
+            ->view('emails.reset_password',['token'=> $this->token,'user'=>$user]);
     }
 
     /**

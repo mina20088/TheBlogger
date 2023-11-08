@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body style="width: 100%; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word; margin: 11rem 0;">
+<body style="width: 100%; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word;">
 <div role="article" aria-roledescription="email" aria-label lang="en">
     <section style="margin-left: auto; margin-right: auto; max-width: 640px; border-radius: 8px; background-color: #ffffff; padding: 32px 24px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)">
         <header style="margin-bottom:20px; margin-top:20px;  ">

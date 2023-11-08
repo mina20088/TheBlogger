@@ -31,8 +31,6 @@ class RegisterController extends Controller
 
         event(new Registered($user));
 
-        $user->notify(new SendWelcomeEmailNotification());
-
         return redirect()->route('dashboard')->with('success','Welcome Back ,' . $request->user('web')->username);
     }
 }

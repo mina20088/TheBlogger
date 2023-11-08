@@ -1,7 +1,7 @@
 
 <x-layouts.email-layout :$message>
 
-    <main style="margin-top: 32px">
+    <main>
         <h2 style="color: #374151">Hi <span style="color: #1C64F2">{{ $username }}</span>,</h2>
         <p style="margin-top: 8px; line-height: 2; color: #4B5563">
         </p>
@@ -36,7 +36,6 @@
             Thanks, <br>
             TheBlogger Team
         </p>
-        <p></p>
     </main>
     <footer style="margin-top: 32px;">
         <p style="margin-top: 12px; color: #6B7280">© 2023 TheBlogger. All Rights
