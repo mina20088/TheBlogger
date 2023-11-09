@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Events\BeforePasswordRest;
+use App\Http\Requests\PasswordRestFormRequest;
 use App\Listeners\AddPasswordToOldPassword;
 use App\Models\OldPassword;
 use App\Models\User;
@@ -19,40 +20,11 @@ class PasswordRestingController extends Controller
         return view('password_restting.create',['title'=>'Resetting Password','token' => $token, 'email'=> $email]);
     }
 
-    public function store(Request $request)
+    public function store(PasswordRestFormRequest $request)
     {
 
-        $user = User::with('passwords')->where('email','minaremonshaker@gmail.com')->first();
 
-        $passwords = $user->passwords->pluck('password');
-
-
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-        ]);
-
-
-        foreach ($passwords as $pass)
-        {
-            if((Hash::check($request->input('password'), $pass))){
-                return back()->with(['failed' => 'This Password Is Used Before Please Use Another password']);
-            }
-        }
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-
-                $user->save();
-
-                event(new BeforePasswordRest($user));
-            }
-        );
+        $status = $request->resetPassword();
 
         return $status === Password::PASSWORD_RESET
             ? redirect()->route('login.create')->with(['success'=>'Your Password Has Been Changed '])
