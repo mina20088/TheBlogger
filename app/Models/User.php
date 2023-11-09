@@ -56,10 +56,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function activeLogins():HasMany
+    public function passwords(): HasMany
+    {
+        return $this->hasMany(OldPassword::class);
+    }
+
+    public function logins():HasMany
     {
         return $this->hasMany(ActiveLogin::class);
     }
+
 
     public function sendPasswordResetNotification($token): void
     {

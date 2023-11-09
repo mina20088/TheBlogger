@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 
+use App\Events\BeforePasswordRest;
+use App\Listeners\AddPasswordToOldPassword;
 use App\Listeners\AddUserToActiveLogins;
 use App\Listeners\SendPasswordResetEmailListener;
 use App\Listeners\SendWelcomeEmail;
@@ -26,10 +28,11 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
             AddUserToActiveLogins::class,
             SendWelcomeEmail::class,
+            AddPasswordToOldPassword::class
         ],
 
-        Login::class => [
-
+        BeforePasswordRest::class => [
+            AddPasswordToOldPassword::class
         ]
     ];
 

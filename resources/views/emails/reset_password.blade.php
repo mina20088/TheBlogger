@@ -13,7 +13,7 @@
                 </p>
                 <h4>To reset your password,Please click on the below button:</h4>
                 <div style="display: grid; place-content: center">
-                    <a href="{{ route('password.reset',['token' =>$token]) }}" class="hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300" style="align-items: center; border-radius: 8px; background-color: #1A56DB; padding: 28px; text-align: center; font-weight: 700; color: #ffffff; text-decoration-line: none">
+                    <a href="{{ route('password.reset',['token' =>$token,'email'=> $user->email]) }}" class="hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300" style="align-items: center; border-radius: 8px; background-color: #1A56DB; padding: 28px; text-align: center; font-weight: 700; color: #ffffff; text-decoration-line: none">
                         Reset Password
                     </a>
                 </div>
