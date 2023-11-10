@@ -42,14 +42,15 @@ class PasswordRestFormRequest extends FormRequest
     {
         return Password::reset(
             $this->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
+            function (User $user, string $password)
+            {
                 $user->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
 
-                $user->save();
-
                 event(new BeforePasswordRest($user));
+
+                $user->save();
             }
         );
     }
