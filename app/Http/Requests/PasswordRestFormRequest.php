@@ -31,16 +31,12 @@ class PasswordRestFormRequest extends FormRequest
         return [
             'token' => ['required'],
             'email' => ['required','email'],
-            'password' => ['required','min:8','confirmed',new validatePasswordExists($this->input('email'))],
+            'password' => ['required','confirmed', \Illuminate\Validation\Rules\Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(3),new validatePasswordExists($this->input(
+                'email'
+            ))]
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-          'password.PasswordExists' => 'you password found'
-        ];
-    }
 
     public function resetPassword()
     {

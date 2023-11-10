@@ -23,7 +23,6 @@ class PasswordRestingController extends Controller
     public function store(PasswordRestFormRequest $request)
     {
 
-
         $status = $request->resetPassword();
 
         return $status === Password::PASSWORD_RESET
