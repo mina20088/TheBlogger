@@ -28,15 +28,8 @@
     </style>
 </head>
 <body style="width: 100%; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word;">
-<div role="article" aria-roledescription="email" aria-label lang="en">
-    <section style="margin-left: auto; margin-right: auto; max-width: 640px; border-radius: 8px; background-color: #ffffff; padding: 32px 24px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)">
-        <header style="margin-bottom:20px; margin-top:20px;  ">
-            <a style="display:grid; justify-content:center;" href="#">
-                <img class="sm-h-8" src="{{ $message->embed(resource_path('images/logo.png')) }}" alt style="max-width: 100%; vertical-align: middle; line-height: 1; border: 0; height: auto; width: 256px">
-            </a>
-        </header>
+    <div role="article" aria-roledescription="email" aria-label lang="en">
         {{ $slot }}
-    </section>
-</div>
+    </div>
 </body>
 </html>

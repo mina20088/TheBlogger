@@ -12,16 +12,21 @@ class SendPasswordRestedEmailNotification extends Notification
     {
     }
 
-    public function via($notifiable): array
+    public function via(Object $notifiable): array
     {
         return ['mail'];
     }
 
     public function toMail($notifiable): MailMessage
     {
+        $created_at = $notifiable->passwords->where('user_id',$notifiable->id)->last()->created_at;
+
         return (new MailMessage)
             ->subject('Password Resisted Confirmation')
-            ->view('emails.susseful_password_reset',['user'=>$this->user]);
+            ->view('emails.susseful_password_reset',[
+                'user'=>$notifiable,
+                'created_at'=>$created_at
+            ]);
     }
 
     public function toArray($notifiable): array

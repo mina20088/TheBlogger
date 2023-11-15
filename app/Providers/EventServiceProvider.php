@@ -7,6 +7,7 @@ use App\Events\BeforePasswordRest;
 use App\Listeners\AddPasswordToOldPassword;
 use App\Listeners\AddUserToActiveLogins;
 use App\Listeners\SendPasswordResetEmailListener;
+use App\Listeners\SendPasswordRestConfirmationNotification;
 use App\Listeners\SendWelcomeEmail;
 use App\Notifications\SendRestEmailNotification;
 use Illuminate\Auth\Events\Login;
@@ -33,6 +34,10 @@ class EventServiceProvider extends ServiceProvider
 
         BeforePasswordRest::class => [
             AddPasswordToOldPassword::class
+        ],
+
+        PasswordReset::class => [
+            SendPasswordRestConfirmationNotification::class
         ]
     ];
 

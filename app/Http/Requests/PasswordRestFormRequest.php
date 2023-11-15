@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Events\BeforePasswordRest;
 use App\Models\User;
 use App\Rules\validatePasswordExists;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,7 @@ class PasswordRestFormRequest extends FormRequest
 
     public function resetPassword()
     {
+
         return Password::reset(
             $this->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password)
@@ -51,7 +53,12 @@ class PasswordRestFormRequest extends FormRequest
                 event(new BeforePasswordRest($user));
 
                 $user->save();
+
+                event(new PasswordReset($user));
             }
+
         );
+
+
     }
 }

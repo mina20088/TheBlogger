@@ -8,6 +8,7 @@ use App\Http\Requests\PasswordRestFormRequest;
 use App\Listeners\AddPasswordToOldPassword;
 use App\Models\OldPassword;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;

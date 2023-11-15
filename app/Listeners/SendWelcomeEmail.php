@@ -2,11 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Mail\RegistrationWelcomeEmail;
 use App\Models\User;
 use App\Notifications\SendWelcomeEmailNotification;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Notifications\Notifiable;
 
 
 
