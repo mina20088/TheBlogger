@@ -20,7 +20,7 @@ class PasswordRestController extends Controller
 
 
         if ($status === Password::RESET_THROTTLED) {
-            return back()->with(['failed' => 'You Have To Create A New Token After ' . Carbon::parse(120)]);
+            return back()->with(['failed' => 'You Have To Create A New Token After ' . config('auth.passwords.users.throttle') . ' seconds']);
         }
 
         return back()->with(['success' => 'Password Link Sent To Email ' . $request->input('email')]);
