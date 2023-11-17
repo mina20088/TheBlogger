@@ -6,16 +6,13 @@ namespace App\Providers;
 use App\Events\BeforePasswordRest;
 use App\Listeners\AddPasswordToOldPassword;
 use App\Listeners\AddUserToActiveLogins;
-use App\Listeners\SendPasswordResetEmailListener;
 use App\Listeners\SendPasswordRestConfirmationNotification;
 use App\Listeners\SendWelcomeEmail;
-use App\Notifications\SendRestEmailNotification;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
+
 
 class EventServiceProvider extends ServiceProvider
 {

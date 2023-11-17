@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\SendEmailVerificationNotification;
 use App\Notifications\SendRestEmailNotification;
+use App\Notifications\SendWelcomeEmailNotification;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notification;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
 
@@ -71,6 +73,12 @@ class User extends Authenticatable
     {
         $this->notify(new SendRestEmailNotification($token));
     }
+
+
+     public function sendEmailVerificationNotification(): void
+     {
+         $this->notify(new SendEmailVerificationNotification());
+     }
 
 
     public function routeNotificationForEmail(Notification $notification)

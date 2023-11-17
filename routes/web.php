@@ -12,6 +12,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +57,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/logout', LogoutController::class)->name('logout');
 
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->middleware('verified')->name('dashboard');
 
     Route::get('/session/active',[SessionsController::class,'index'])->name('sessions.index');
 
@@ -65,4 +66,11 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
+Route::get('/verify',function()
+{
+    return view('verification.notice',['title'=>'Verification Notice']);
+})->middleware('auth')->name('verification.notice');
 
+Route::get('verify/{id}/{hash}',function(EmailVerificationRequest $request){
+
+})->middleware(['auth','signed'])->name('verification.verify');

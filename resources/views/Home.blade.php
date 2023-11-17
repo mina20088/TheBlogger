@@ -1,4 +1,4 @@
-<x-layouts.home-layout>
+<x-layouts.home-layout class="p-20">
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
