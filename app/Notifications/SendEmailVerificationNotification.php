@@ -52,7 +52,7 @@ class SendEmailVerificationNotification extends Notification
         $url = $this->verificationUrl($notifiable);
 
         return (new MailMessage)
-            ->view('emails.verification_email',['url'=>$url]);
+            ->view('emails.verification_email',['url'=>$url, 'username'=>$notifiable->username]);
     }
 
     /**

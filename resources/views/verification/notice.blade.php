@@ -3,7 +3,8 @@
        {{ $title }}
     @endslot
 
-    <div class="flex justify-center items-center h-screen">
+    <div class="flex flex-col justify-center items-center h-screen">
+        <x-alerts/>
         <div class='flex flex-row bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-2xl'>
             <div class="flex flex-col p-4 justify-between leading-normal basis-full">
                 <h5 class="mb-2 text-3xl font-bold tracking-tight text-blue-900 text-center">Email Verification Notice</h5>
@@ -19,7 +20,11 @@
                         please check your spam folder or click "Resend Verification Email" on the below botton.
                     </p>
                     <div class='flex justify-center' >
-                        <a href="#" class="px-6 py-3.5 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm text-center me-2 mb-2">Re-send Verification Email</a>
+                        <form method="post" action="{{ route('verification.send') }}">
+                            @csrf
+                            <button type="submit" class="px-6 py-3.5 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm text-center me-2 mb-2">Re-send Verification Email</button>
+                        </form>
+
                     </div>
 
                     <p class='text-gray-500'>

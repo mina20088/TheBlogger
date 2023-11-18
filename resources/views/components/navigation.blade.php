@@ -3,10 +3,12 @@
         <a href="{{ route('home.index') }}" class="text-white text-2xl font-bold"><img
                 src="{{ Vite::asset('resources/images/logo.png')  }}" width="200" height="67"></a>
         <div class="hidden md:flex space-x-4">
-            <a href="{{ route('home.index') }}" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Home</a>
-            <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">About</a>
-            <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Services</a>
-            <a href="#" class="text-2xl max-lg:text-lg  text-white hover:text-blue-300">Contact</a>
+            @guest()
+                <a href="{{ route('home.index') }}" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Home</a>
+                <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">About</a>
+                <a href="#" class="text-2xl max-lg:text-lg text-white hover:text-blue-300">Services</a>
+                <a href="#" class="text-2xl max-lg:text-lg  text-white hover:text-blue-300">Contact</a>
+            @endguest
         </div>
         <div class="hidden md:flex space-x-4">
             @guest()

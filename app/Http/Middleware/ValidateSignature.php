@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Closure;
 use Illuminate\Routing\Middleware\ValidateSignature as Middleware;
 
 class ValidateSignature extends Middleware
@@ -19,4 +20,14 @@ class ValidateSignature extends Middleware
         // 'utm_source',
         // 'utm_term',
     ];
+
+    public function handle($request, Closure $next, ...$args)
+    {
+        if(!$request->hasValidSignature())
+        {
+            return redirect()->route('verification.notice',)->with('failed','verification link expired please re-send a new verification link');
+        }
+
+        return $next($request);
+    }
 }

@@ -423,13 +423,13 @@
                 <table class="w-full" cellpadding="0" cellspacing="0" role="none">
                     <tr>
                         <td class="text-center">
-                            <img src="/images/logo.png" alt="logo">
+                            <img src="{{ $message->embed(resource_path('images/logo.png')) }}" alt="logo">
                         </td>
                     </tr>
                     <tr>
                         <td class="px-8 sm:px-4 max-w-0">
 
-                            <h2 class="text-gray-700">Hi <span class="text-blue-600">mina</span>,</h2>
+                            <h2 class="text-gray-700">Hi <span class="text-blue-600">{{ $username }}</span>,</h2>
                             <script>
                                 module.exports = {
                                     class:props.class | 'mt-3 font-normal text-gray-700'
@@ -482,7 +482,7 @@
                         <td class="sm:block sm:w-full px-8 sm:px-0">
                             <p class="m-0 mb-2 text-sm text-slate-400">
                             </p><footer style="margin-top: 32px;">
-                                <img src="/images/logo.png" width="100" alt="">
+                                <img src="{{ $message->embed(resource_path('images/logo.png')) }}" width="100" alt="">
                                 <p style="margin-top: 12px; color: #6B7280">© 2023 TheBlogger. All Rights
                                     Reserved.</p>
                             </footer>
