@@ -11,6 +11,9 @@ class CategoryController extends Controller
     {
         $posts = $category->posts()->with(['user','category'])->get();
 
-        return view('Home',['posts'=> $posts]);
+        return view('Home',[
+            'title'=> $category->name,
+            'posts'=> $posts
+        ]);
     }
 }

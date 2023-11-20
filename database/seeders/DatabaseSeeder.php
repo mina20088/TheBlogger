@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
+use App\Models\Follower;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -41,14 +42,16 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'mina',
             'last_name' =>'shaker',
             'username' => 'mina200888',
-            'email' => 'minakiroollos@gmail.com'
+            'email' => 'minakiroollos@gmail.com',
+            'password' => 'Hecaro1986@'
         ]);
 
         $beshoy =  User::factory()->create([
             'first_name' => 'beshoy',
             'last_name' => 'shaker',
             'username' => 'besho',
-            'email' => 'besho@gmail.com'
+            'email' => 'besho@gmail.com',
+            'password' => 'Hecaro1986@'
         ]);
 
 
@@ -113,5 +116,6 @@ class DatabaseSeeder extends Seeder
             'category_id' => $Lifestyle->getAttribute('id'),
             'slug' => Str::slug('post10','_')
         ]);
+
     }
 }

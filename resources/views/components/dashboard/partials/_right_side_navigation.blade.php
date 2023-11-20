@@ -20,8 +20,7 @@
             <x-dashboard.dashboard-user-avatar-button class="text-gray-900"/>
             <!-- Dropdown menu -->
             <x-dashboard.dashboard-user-dropdown>
-                <x-dashboard-user-dropdown-items href="{{ route('dashboard') }}" />
-                <x-dashboard-user-dropdown-items title="Profile" />
+                <x-dashboard-user-dropdown-items href="{{ route('profile.index') }}" title="Profile" />
                 <x-dashboard-user-dropdown-items title="Settings" />
             </x-dashboard.dashboard-user-dropdown>
         </div>

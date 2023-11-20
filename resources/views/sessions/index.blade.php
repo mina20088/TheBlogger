@@ -2,6 +2,7 @@
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
+    <x-dashboard.dashboard-content-header :title="$title"/>
     <div class=" bg-white p-12 table-responsive">
         <table id="mytable" class=" table table-hover" style="width:100%">
             <thead>

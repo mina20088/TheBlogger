@@ -10,6 +10,9 @@ class UserController extends Controller
     public function index(User $user)
     {
         $posts = $user->posts()->with(['category','user'])->get();
-        return view('Home',['posts'=> $posts]);
+        return view('Home',[
+            'title' => $user->username,
+            'posts'=> $posts,
+        ]);
     }
 }

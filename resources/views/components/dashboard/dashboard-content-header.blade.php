@@ -1,5 +1,6 @@
 @props([
-    'title' => 'starter page'
+    'title' => 'starter page',
+    "show" => true
 ])
 <div class="content-header">
     <div class="container-fluid">

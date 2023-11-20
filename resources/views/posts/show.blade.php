@@ -1,7 +1,8 @@
 <x-layouts.home-layout>
 
-    <!-- Header -->
-
+    <x-slot name="title">
+        {{ $title }}
+    </x-slot>
 
     <div class="grid grid-cols-3 max-lg:grid-cols-1 h-screen">
 

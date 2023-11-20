@@ -3,7 +3,7 @@ import '../css/app.css'
 import.meta.glob(['../images/**'])
 import $ from 'jquery';
 import 'flowbite';
-
+import('https://kit.fontawesome.com/7824f7faff.js')
 // Helper function
 let domReady = (cb) => {
     document.readyState === 'interactive' || document.readyState === 'complete'

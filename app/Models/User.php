@@ -9,15 +9,18 @@ use App\Notifications\SendWelcomeEmailNotification;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
+
 
     /**
      * The attributes that are mass assignable.
@@ -53,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
@@ -63,9 +67,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(OldPassword::class);
     }
 
-    public function logins():HasMany
+
+    public function follower(): BelongsToMany
     {
-        return $this->hasMany(ActiveLogin::class);
+        return $this
+            ->belongsToMany(User::class,'follower_user','follower_id','user_id')
+            ->withTimestamps();
+    }
+
+    public function followings(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(User::class,'follower_user','user_id','follower_id')
+            ->withTimestamps();
     }
 
 
@@ -74,16 +88,18 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new SendRestEmailNotification($token));
     }
 
-
-     public function sendEmailVerificationNotification(): void
-     {
-         $this->notify(new SendEmailVerificationNotification());
-     }
-
-
-    public function routeNotificationForEmail(Notification $notification)
+    public function sendEmailVerificationNotification(): void
     {
-        return $this->email;
+        $this->notify(new SendEmailVerificationNotification());
+    }
+
+    public function FullName():string
+    {
+         return  Str::of($this->first_name)->append(' ',$this->last_name);
+    }
+    public  function follows(User $user): bool
+    {
+        return $this->followings()->where('id',$user->id)->exists();
     }
 
 }

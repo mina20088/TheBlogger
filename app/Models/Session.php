@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Session extends Model
 {
+    use HasFactory;
     public function active(): HasOne
     {
         return $this->hasOne(ActiveLogin::class,'session_id');

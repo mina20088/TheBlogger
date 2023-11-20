@@ -13,16 +13,40 @@
 
             <x-category_button  :category="$post->category"/>
         </div>
-        <div class="flex flex-col mt-4">
+        <div class="flex flex-col mt-4  h-[8rem]">
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post->excrept }}</p>
+        </div>
+        <div class="flex flex-row bg-gray-100 justify-center">
+            <a data-tooltip-target="read-more" type="button" href="{{ route('posts.show',$post->slug) }}" class="mt-3 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                <i class="fab fa-readme text-2xl text-red-950"></i>
+            </a>
+            <div id="read-more" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 Read More
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            @auth()
+                @if(Auth::user()->follows($post->user))
+                    <form class="inline-flex" method="post" action="{{ route('follower.unfollow',$post->user->username) }}">
+                        @csrf
+                        <button data-tooltip-target="Follow" class="text-2xl text-blue-600" type="submit"><i class="fas fa-unlink"></i></button>
+                        <div id="Follow" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            Follow
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </form>
+                @else
+                    <form class="inline-flex" method="post" action="{{ route('follower.follow',$post->user->username) }}">
+                        @csrf
+                        <button data-tooltip-target="Follow" class="text-2xl text-blue-600" type="submit"><i class="fab fa-foursquare"></i></button>
+                        <div id="Follow" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            Follow
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </form>
+                @endif
 
+            @endauth
         </div>
 
-        <a href="{{ route('posts.show',$post->slug) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 absolute top-[28rem]">
-            Read more
-            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
     </div>
 </div>

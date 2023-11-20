@@ -4,12 +4,14 @@ use App\Http\Controllers\ActiveLoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasswordRestController;
 use App\Http\Controllers\PasswordRestingController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResendEmailVeificationController;
 use App\Http\Controllers\SessionsController;
@@ -27,16 +29,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/',[HomeController::class,'index'])->name('home.index');
+
+Route::get('/post/{post:slug}',[PostsController::class,'show'])->name('posts.show');
+
+Route::get('/category/{category:slug}',[CategoryController::class,'index'])->name('category.index');
+
+Route::get('/user/{user:username}',[UserController::class,'index'])->name('user.index');
 
 Route::middleware('guest')->group(function(){
-
-    Route::get('/',[HomeController::class,'index'])->name('home.index');
-
-    Route::get('/post/{post:slug}',[PostsController::class,'show'])->name('posts.show');
-
-    Route::get('/category/{category:slug}',[CategoryController::class,'index'])->name('category.index');
-
-    Route::get('/user/{user:username}',[UserController::class,'index'])->name('user.index');
 
     Route::get('/login', [LoginController::class,'create'])->name('login.create');
 
@@ -67,6 +68,12 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/session/active',[SessionsController::class,'index'])->name('sessions.index');
 
     Route::get('/session/logins',[ActiveLoginController::class,'index'])->name('active-login.index.index');
+
+    Route::get('/profile',[ProfileController::class,'index'])->name('profile.index');
+
+    Route::post('users/{user:username}/follow',[FollowerController::class,'follow'])->name('follower.follow');
+
+    Route::post('users/{user:username}/unfollow',[FollowerController::class,'unfollow'])->name('follower.unfollow');
 
 });
 

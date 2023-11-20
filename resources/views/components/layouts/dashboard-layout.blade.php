@@ -23,8 +23,7 @@
 
 
         <x-alerts/>
-        <x-dashboard.dashboard-content-header :title="$title"/>
-
+    
 
         <div class="content">
             {{ $slot }}

@@ -3,6 +3,7 @@
         {{ $title }}
     </x-slot:title>
 
+    <x-dashboard.dashboard-content-header :title="$title"/>
     <div class="flex flex-col mx-5">
         <h1 class="text-bold mb-4">All activity</h1>
         <div class="table-responsive">
