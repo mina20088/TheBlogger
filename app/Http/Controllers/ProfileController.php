@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
+
     public function index(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $fullName = Str::of( auth()->user()->first_name)->append(' ',auth()->user()->last_name);

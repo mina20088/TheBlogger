@@ -24,7 +24,7 @@ class SendPasswordRestedEmailNotification extends Notification
         return (new MailMessage)
             ->subject('Password Resisted Confirmation')
             ->view('emails.susseful_password_reset',[
-                'user'=>$notifiable,
+                'username'=>$notifiable->username,
                 'created_at'=>$created_at
             ]);
     }

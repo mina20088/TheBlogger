@@ -2,23 +2,22 @@
 
 namespace App\Notifications;
 
-use App\Mail\RegistrationWelcomeEmail;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendRestEmailNotification extends Notification
+class SendVerficationSuccessEmail extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function     __construct(
-        protected  string $token
-    ){}
+    public function __construct()
+    {
+        //
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -33,11 +32,9 @@ class SendRestEmailNotification extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail($notifiable):MailMessage
+    public function toMail(object $notifiable): MailMessage
     {
-        return(new MailMessage())
-            ->subject('Reset Password Email')
-            ->view('emails.reset_password',['token'=> $this->token,'user'=>$notifiable]);
+        return (new MailMessage)->view('emails.verficaion_success_email',['username'=>$notifiable->username]);
     }
 
     /**

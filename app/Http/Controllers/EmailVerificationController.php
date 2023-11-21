@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\SendVerficationSuccessEmail;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -20,6 +21,9 @@ class EmailVerificationController extends Controller
             return redirect()->intended('dashboard');
         }
         if($request->user()->markEmailAsVerified()){
+
+            // $request->user()->notify(new SendVerficationSuccessEmail());
+            
             event(new Verified($request->user()));
         }
 

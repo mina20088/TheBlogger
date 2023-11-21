@@ -20,12 +20,14 @@
     </aside>
 
     <div class="content-wrapper">
-
-
-        <x-alerts/>
-    
-
         <div class="content">
+ 
+
+            <div class="inline-block float-right">
+                <x-alerts/>
+            </div>
+
+           
             {{ $slot }}
         </div>
 

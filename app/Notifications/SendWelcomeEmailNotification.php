@@ -20,11 +20,11 @@ class SendWelcomeEmailNotification extends Notification
     }
 
 
-    public function toMail(User $user): MailMessage
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage())
             ->subject('Welcome Email')
-            ->view('emails.register_welcome',['username'=>$user->username]);
+            ->view('emails.register_welcome',['username'=>$notifiable->username]);
     }
 
     public function toArray($notifiable): array

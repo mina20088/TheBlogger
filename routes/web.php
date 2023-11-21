@@ -61,7 +61,6 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware(['auth','verified'])->group(function(){
 
-    Route::get('/logout', LogoutController::class)->name('logout');
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
@@ -78,8 +77,15 @@ Route::middleware(['auth','verified'])->group(function(){
 });
 
 
+Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');
+
 Route::get('/verify', [EmailVerificationController::class,'index'])->middleware('auth')->name('verification.notice');
 
 Route::get('verify/{id}/{hash}',[EmailVerificationController::class,'store'])->middleware(['auth','signed'])->name('verification.verify');
 
 Route::post('/verify', ResendEmailVeificationController::class)->middleware(['auth','throttle:6,1'])->name('verification.send');
+
+
+Route::get('/emails', function () {
+    return view('emails.register_welcome');
+});

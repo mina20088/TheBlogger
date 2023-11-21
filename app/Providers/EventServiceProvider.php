@@ -7,9 +7,11 @@ use App\Events\BeforePasswordRest;
 use App\Listeners\AddPasswordToOldPassword;
 use App\Listeners\AddUserToActiveLogins;
 use App\Listeners\SendPasswordRestConfirmationNotification;
+use App\Listeners\SendSuccessVerficationEmail;
 use App\Listeners\SendWelcomeEmail;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -35,6 +37,10 @@ class EventServiceProvider extends ServiceProvider
 
         PasswordReset::class => [
             SendPasswordRestConfirmationNotification::class
+        ],
+
+        Verified::class =>[
+            SendSuccessVerficationEmail::class
         ]
     ];
 
