@@ -86,6 +86,3 @@ Route::get('verify/{id}/{hash}',[EmailVerificationController::class,'store'])->m
 Route::post('/verify', ResendEmailVeificationController::class)->middleware(['auth','throttle:6,1'])->name('verification.send');
 
 
-Route::get('/emails', function () {
-    return view('emails.register_welcome');
-});
