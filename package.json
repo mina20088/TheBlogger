@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "admin-lte": "^3.2.0",
-        "datatables.net-dt": "^1.13.6"
+        "datatables.net-dt": "^1.13.6",
+        "trix": "^2.0.8"
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="X-CSRF-TOKEN" content="{{ csrf_token() }}">
+    @livewireStyles
     @vite('resources/js/app.js')
     <title>{{ $title  }}</title>
 </head>
@@ -21,6 +22,8 @@
 </main>
 
 <x-footter/>
+
+@livewireScripts
 </body>
 
 </html>

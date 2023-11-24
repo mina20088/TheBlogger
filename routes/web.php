@@ -29,13 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('home.index');
 
-Route::get('/post/{post:slug}',[PostsController::class,'show'])->name('posts.show');
-
-Route::get('/category/{category:slug}',[CategoryController::class,'index'])->name('category.index');
-
-Route::get('/user/{user:username}',[UserController::class,'index'])->name('user.index');
 
 Route::middleware('guest')->group(function(){
 
@@ -61,6 +55,7 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware(['auth','verified'])->group(function(){
 
+    Route::get('post/create',[PostsController::class,'create'])->name('post.create');
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
@@ -74,7 +69,20 @@ Route::middleware(['auth','verified'])->group(function(){
 
     Route::post('users/{user:username}/unfollow',[FollowerController::class,'unfollow'])->name('follower.unfollow');
 
+    
+
 });
+
+
+Route::get('/',[HomeController::class,'index'])->name('home.index');
+
+
+
+Route::get('/post/{post:slug}',[PostsController::class,'show'])->name('posts.show');
+
+Route::get('/category/{category:slug}',[CategoryController::class,'index'])->name('category.index');
+
+Route::get('/user/{user:username}',[UserController::class,'index'])->name('user.index');
 
 
 Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');

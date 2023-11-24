@@ -8,9 +8,15 @@
             <x-dashboard.treeview-items class="far fa-comments" :href="route('dashboard')" title="Notification"/>
         </x-dashboard.treeview-items-wrapper>
 
-        <x-dashboard.treeview-items-wrapper>
-            <x-dashboard.treeview-items class="fas fa-blog" :href="route('dashboard')" title="Posts"/>
-        </x-dashboard.treeview-items-wrapper>
+        <x-dashboard.menu-open title="Posts" class="fab fa-usps">
+            <x-dashboard.treeview-items-wrapper>
+                <x-dashboard.treeview-items class="fas fa-plus" :href="route('post.create')" title="create"/>
+            </x-dashboard.treeview-items-wrapper>
+            <x-dashboard.treeview-items-wrapper>
+                <x-dashboard.treeview-items class="fas fa-eye" :href="route('dashboard')" title="show"/>
+            </x-dashboard.treeview-items-wrapper>
+        </x-dashboard.menu-open>
+
 
         <x-dashboard.menu-open title="Sessions" class="fas fa-sign-in-alt">
             <x-dashboard.treeview-items-wrapper>
