@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static truncate()
+ * @method static  create()
  */
 class Post extends Model
 {
@@ -19,9 +20,15 @@ class Post extends Model
 
 
     protected $fillable = [
+        'user_id',
+        'category_id',
         'title',
-        'content'
+        'content',
+        'excrept',
+        'slug'
+
     ];
+
 
     public function user(): BelongsTo
     {
@@ -32,6 +39,7 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     //created at mutator
     protected function createdAt():Attribute
     {

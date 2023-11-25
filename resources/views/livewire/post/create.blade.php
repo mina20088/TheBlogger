@@ -1,4 +1,5 @@
 <div class="max-w-full mx-auto p-10">
+    <x-alerts/>
     <form wire:submit.prevent='save'>
         <div class="mb-6">
             <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">title</label>
@@ -8,10 +9,10 @@
             @enderror
         </div>
 
-        <input type="hidden" name="form.user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" wire:model='form.user_id'>
 
         <div class="mb-6">  
-            <livewire:category.categorydropdown wire:model='form.category' :$categories />
+            <livewire:category.categorydropdown wire:model='form.category_id' :$categories />
             @error('form.category')
             <span class="text-red-600">{{ $message }}</span>
           @enderror

@@ -11,7 +11,9 @@ class CreatePost extends Form
     public string $title = "";
 
     #[validate('required')]
-    public string $user_id = "";
+    public int $user_id;
+
+    public string $slug;
 
     #[validate('required')]
     public string $excrept = "";
@@ -20,7 +22,7 @@ class CreatePost extends Form
     public string $content = "";
 
     #[validate('exists:categories,id')]
-    public int $category;
+    public int $category_id;
 
 
 
