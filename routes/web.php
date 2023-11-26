@@ -8,6 +8,7 @@ use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PasswordRestController;
 use App\Http\Controllers\PasswordRestingController;
 use App\Http\Controllers\PostsController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ResendEmailVeificationController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +71,7 @@ Route::middleware(['auth','verified'])->group(function(){
 
     Route::post('users/{user:username}/unfollow',[FollowerController::class,'unfollow'])->name('follower.unfollow');
 
-    
+    Route::get('/user/notification',[NotificationController::class,'index'])->name('notification.index');
 
 });
 

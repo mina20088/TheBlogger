@@ -5,7 +5,9 @@ namespace App\Livewire\Post;
 use App\Livewire\Forms\CreatePost;
 use App\Models\Category;
 use App\Models\Post;
+use App\Notifications\NewpostNotificatin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -34,8 +36,12 @@ class Create extends Component
     { 
         $this->form->validate(); 
         
-        Post::create($this->form->all());
-        
+        $post =  Post::create($this->form->all());
+
+        $followers = Auth::user()->follower;
+
+        Notification::send($followers,new NewpostNotificatin($post) );
+
         \session()->flash('success','added succesfully');
     }
 

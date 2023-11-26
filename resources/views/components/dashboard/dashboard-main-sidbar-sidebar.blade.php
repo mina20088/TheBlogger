@@ -5,7 +5,7 @@
         </x-dashboard.treeview-items-wrapper>
 
         <x-dashboard.treeview-items-wrapper>
-            <x-dashboard.treeview-items class="far fa-comments" :href="route('dashboard')" title="Notification"/>
+            <x-dashboard.treeview-items class="far fa-comments" :href="route('notification.index')" title="Notification"/>
         </x-dashboard.treeview-items-wrapper>
 
         <x-dashboard.menu-open title="Posts" class="fab fa-usps">

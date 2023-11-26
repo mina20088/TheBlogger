@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @vite('resources/js/dashboard.js')
     <title>{{ $title }}</title>
-
+    @vite('resources/js/dashboard.js')
     @livewireStyles
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
 <body class="hold-transition sidebar-mini" id="body" style="visibility: hidden;">

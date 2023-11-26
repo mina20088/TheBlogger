@@ -19,7 +19,7 @@ class CreatePost extends Form
     public string $excrept = "";
 
     #[validate('required')]
-    public string $content = "";
+    public string $content;
 
     #[validate('exists:categories,id')]
     public int $category_id;
