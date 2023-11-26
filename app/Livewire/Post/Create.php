@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Post;
 
+use \session;
 use App\Livewire\Forms\CreatePost;
 use App\Models\Category;
 use App\Models\Post;
@@ -29,7 +30,7 @@ class Create extends Component
 
     public function updated()
     {
-        $this->form->slug = Str::slug( $this->form->title);
+        $this->form->slug = Str::slug($this->form->title);
     }
 
     public function save()
@@ -40,9 +41,9 @@ class Create extends Component
 
         $followers = Auth::user()->follower;
 
-        Notification::send($followers,new NewpostNotificatin($post) );
+        Notification::send($followers,new NewpostNotificatin($post));
 
-        \session()->flash('success','added succesfully');
+        session()->flash('success','added succesfully');
     }
 
     

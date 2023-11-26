@@ -7,6 +7,8 @@ import '../css/dashboard.css'
 import 'flowbite'
 import 'admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css'
 import 'admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js'
+import './PusherConfig.js'
+
 
 let domReady = (cb) => {
     document.readyState === 'interactive' || document.readyState === 'complete'

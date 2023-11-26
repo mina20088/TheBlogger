@@ -24,6 +24,7 @@
                 </thead>
                 <tbody>
                 @foreach($active_logins as $login)
+                    @if($login->user_id == auth()->user()->id)
                     <tr>
                         <td>{{ $login->id }}</td>
                         <td>{{ $login->session_id }}</td>
@@ -36,6 +37,8 @@
                         <td>{{ $login->ip_address }}</td>
                         <td>{{ $login->status }}</td>
                     </tr>
+                    @endif
+ 
                 @endforeach
                 </tbody>
             </table>
@@ -61,7 +64,7 @@
                 </thead>
                 <tbody>
                 @foreach($active_logins as $login)
-                    @if($login->status == 'active')
+                    @if($login->status == 'active' && $login->user_id == auth()->user()->id)
                         <tr>
                             <td>{{ $login->id }}</td>
                             <td>{{ $login->session_id }}</td>

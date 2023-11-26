@@ -5,7 +5,10 @@
         </x-dashboard.treeview-items-wrapper>
 
         <x-dashboard.treeview-items-wrapper>
-            <x-dashboard.treeview-items class="far fa-comments" :href="route('notification.index')" title="Notification"/>
+            <div class="relative">
+                <x-dashboard.treeview-items class="far fa-comments" :href="route('notification.index')" title="Notification"/>
+                <livewire:notifiacation-count @saved="$refresh"/>
+            </div>
         </x-dashboard.treeview-items-wrapper>
 
         <x-dashboard.menu-open title="Posts" class="fab fa-usps">
