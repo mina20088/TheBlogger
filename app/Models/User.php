@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Events\NewPost;
 use App\Notifications\SendEmailVerificationNotification;
 use App\Notifications\SendRestEmailNotification;
 use App\Notifications\SendWelcomeEmailNotification;
@@ -16,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notification;
+use App\Notifications\NewpostNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {

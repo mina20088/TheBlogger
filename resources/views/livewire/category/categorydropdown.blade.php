@@ -1,6 +1,5 @@
 
 <div>
-
     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">categories</label>
     <select 
        id="category" 
@@ -10,9 +9,6 @@
     @foreach ($categories as $category )
         <option value="{{ $category->id }}" wire:key='{{ $category->id }}'>{{ $category->name }}</option>
     @endforeach 
-
-
-
     </select>
 </div>
 

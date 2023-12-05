@@ -10,7 +10,10 @@
           <h5 class="widget-user-desc text-right">Web Designer</h5>
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" src="{{ Vite::asset('resources/images/profile-picture-3.jpg') }}" alt="User Avatar">
+            <img class="img-circle" src="{{ Vite::asset('resources/images/profile-picture-3.jpg') }}" alt="User Avatar">
+            <livewire:profile-pictures-upload/>
+
+
         </div>
         <div class="card-footer">
           <div class="row">

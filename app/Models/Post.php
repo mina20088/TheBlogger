@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\BroadcastableModelEventOccurred;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static truncate()
- * @method static  create()
  */
 class Post extends Model
 {
@@ -46,5 +46,17 @@ class Post extends Model
         return Attribute::make(
             get: fn(string $value) => Carbon::parse($value)->diffForHumans()
         );
+    }
+
+    public function broadcastOn(string $event): array
+    {
+/*        return (new BroadcastableModelEventOccurred(
+            $this,$event
+        ))->dontBroadcastToCurrentUser();*/
+
+        return match ($event){
+            'created' => [],
+            default => [$this, $this->user],
+        };
     }
 }

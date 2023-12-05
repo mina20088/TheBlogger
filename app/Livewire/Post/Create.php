@@ -2,15 +2,23 @@
 
 namespace App\Livewire\Post;
 
-use \session;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Notifications\Events\BroadcastNotificationCreated;
+use session;
+use App\Events\NewPost;
 use App\Livewire\Forms\CreatePost;
 use App\Models\Category;
 use App\Models\Post;
-use App\Notifications\NewpostNotificatin;
+use App\Notifications\NewpostNotification;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
+
 
 
 
@@ -19,36 +27,37 @@ class Create extends Component
 
     public CreatePost $form;
 
-    public function mount(){
-        $this->form->user_id = $this->user()->id;
-     }
-
-    #[Computed]
-    public function user(){
-        return Auth::user();
-    }
-
-    public function updated()
+    public function mount(): void
     {
-        $this->form->slug = Str::slug($this->form->title);
+        $this->form->user_id = Auth::user()->id;
     }
 
-    public function save()
-    { 
-        $this->form->validate(); 
-        
+    public function updated(): void
+    {
+        $this->form->slug = Str::slug($this->form->title,'_');
+    }
+
+    public function save(): void
+    {
+        $this->form->validate();
+
         $post =  Post::create($this->form->all());
 
-        $followers = Auth::user()->follower;
+        $followers = $post->user->follower;
 
-        Notification::send($followers,new NewpostNotificatin($post));
+        Notification::send($followers, new NewpostNotification($post));
+
+        foreach ($followers as $follower)
+        {
+            event(new  NewPost($post,$follower->id) );
+        }
 
         session()->flash('success','added succesfully');
     }
 
-    
-    public function render()
+
+    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        return view('livewire.post.create',['categories'=> Category::all()]);
+        return view('livewire.post.create',['categories'=>Category::all()]);
     }
 }

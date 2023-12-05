@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewPost;
 use App\Http\Requests\FollowersRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class FollowerController extends Controller
         {
             return redirect()->route('home.index')->with('failed','you cant follow your self');
         }
-    
+
         $follower->followings()->attach($user);
 
         return redirect()->route('home.index')->with('success','User Followed Successfully');
