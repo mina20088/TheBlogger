@@ -5,17 +5,18 @@ namespace App\Notifications;
 use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewpostNotificatin extends Notification
+class NewportNotification extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(private Post $post)
+    public function __construct(public Post $post)
     {
         //
     }
@@ -27,7 +28,7 @@ class NewpostNotificatin extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['database','broadcast'];
     }
 
 
@@ -42,4 +43,14 @@ class NewpostNotificatin extends Notification
             'notification_creator' => $this->post->user->first_name,
         ];
     }
+
+    public function toBroadcast(object $notifiable): BroadcastMessage
+        {
+        return new BroadcastMessage([
+           'message' => 'created'
+        ]);
+    }
+
+
+
 }
