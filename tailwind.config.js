@@ -10,5 +10,7 @@ export default {
   plugins: [
       require('flowbite/plugin')
   ],
+
+  mode: 'jit'
 }
 

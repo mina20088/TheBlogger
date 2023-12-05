@@ -3,6 +3,9 @@
      {{ $title }}
  </x-slot:title>
 
+
+
+
  <x-dashboard.dashboard-content-header :title="$title"/>
 
  

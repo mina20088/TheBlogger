@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewportNotification extends Notification
+class NewpostNotification extends Notification
 {
     use Queueable;
 
@@ -40,7 +40,7 @@ class NewportNotification extends Notification
     public function toDatabase(object $notifiable): array
     {
         return [
-            'notification_creator' => $this->post->user->first_name,
+            'notification_creator' => $this->post->user->username,
         ];
     }
 

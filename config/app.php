@@ -1,7 +1,9 @@
 <?php
 
+use App\Providers\AppServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Laracasts\Utilities\JavaScript\JavaScriptServiceProvider;
 
 return [
 
@@ -159,9 +161,10 @@ return [
         /*
          * Package Service Providers...
          */
+       
+    
 
-        /*
-         * Application Service Providers...
+         /* Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
