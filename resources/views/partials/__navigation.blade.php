@@ -46,7 +46,10 @@
                             <x-user-dropdown-items content="Settings" />
                         </ul>
                         <div class="py-1">
-                            <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+                            </form>
+                           
                         </div>
                     </div>
                 </div>

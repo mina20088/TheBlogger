@@ -10,9 +10,10 @@
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-32 overflow-y-auto" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
         {{ $slot }}
     </ul>
-    <div class="py-2">
-        <a href="{{ route('logout') }}"
-           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-            out</a>
+    <div class="block  py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+        </form>
     </div>
 </div>

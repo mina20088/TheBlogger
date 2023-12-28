@@ -1,71 +1,49 @@
-<x-app-layout class="grid grid-cols-1 place-content-center place-items-center h-screen">
-    @include('partials.__auth-head',[
-        'title'=>'Regestration',
-        'quote'=>'Join our community of passionate writers and thinkers. Register today to connect with other bloggers, access writing tips and tools, and share your unique voice with the world.'
-    ])
-    <form class="xl:w-[60rem]" action="#" method="post">
+<x-guest-layout class="grid grid-cols-1 place-content-center place-items-center h-[53.4rem]">
+    <div class="max-sm:p-8 sm:p-8">
+        @include('partials.__auth-head',[
+            'title'=>'Regestration',
+            'quote'=>'Join our community of passionate writers and thinkers. Register today to connect with other bloggers, access writing tips and tools, and share your unique voice with the world.'
+        ])
+    </div>
+    <form class="max-sm:w-[31rem] sm:w-[31rem] xl:w-[60rem]" action="" method="POST">
         @csrf
         <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 mb-6 w-full group row-span-2">
-                <input type="text" name="first_name" id="first_name"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="{{ old('first_name') }}"/>
-                <label for="first_name"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                    name</label>
+            <div class="relative z-0 w-full mb-5 group">
+                <x-float-text-input name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder=""/>
+                <x-float-input-label for="first_name">first_name</x-float-input-label>
                 @error('first_name')
-                <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                        class="font-medium">{{$message}}</p>
+                 <x-input-error messages="{{ $message }}" />
                 @enderror
             </div>
-            <div class="relative z-0 mb-6 w-full group ">
-                <input type="text" name="last_name" id="last_name"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="{{ old('last_name') }}"/>
-                <label for="last_name"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                    name</label>
-                @error('last_name')
-                <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                        class="font-medium">{{$message}}</p>
+            <div class="relative z-0 mb-6 w-full group">
+                <x-float-text-input name="last_name" id="last_name" value="{{ old('last_name') }}" placeholder=""/>
+                <x-float-input-label for="last_name">last_name</x-float-input-label>
+                @error('first_name')
+                 <x-input-error messages="{{ $message }}" />
                 @enderror
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <input type="text" name="username" id="username"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="{{old('username')}}"/>
-                <label for="username"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">username
-                    (Ex. Google)</label>
+                <x-float-text-input name="username" id="username" value="{{ old('username') }}" placeholder=""/>
+                <x-float-input-label for="username">username</x-float-input-label>
                 @error('username')
-                <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                        class="font-medium">{{$message}}</p>
+                 <x-input-error messages="{{ $message }}" />
                 @enderror
             </div>
             <div class="relative z-0 w-full mb-6 group ">
-                <input type="text" name="phone" id="phone"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="{{ old('phone') }}"/>
-                <label for="phone"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
-                    number (123-456-7890)</label>
+                <x-float-text-input name="phone" id="phone" value="{{ old('phone') }}" placeholder=""/>
+                <x-float-input-label for="phone">phone</x-float-input-label>
                 @error('phone')
-                <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                        class="font-medium">{{$message}}</p>
+                 <x-input-error messages="{{ $message }}" />
                 @enderror
             </div>
         </div>
         <div class="relative z-0 w-full mb-6 group">
-            <input type="text" name="email" id="email"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder="" value="{{ old('email') }}"/>
-            <label for="email"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+            <x-float-text-input name="email" id="email" value="{{ old('email') }}" placeholder=""/>
+            <x-float-input-label for="email">email</x-float-input-label>
             @error('email')
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                    class="font-medium">{{$message}}</p>
+             <x-input-error messages="{{ $message }}" />
             @enderror
         </div>
         <div class="relative z-0 w-full mb-6 group">
@@ -99,4 +77,4 @@
             <div class=""><span>already registered?</span> <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">login</a></div>
         </div>
     </form>
-</x-app-layout>
+</x-guest-layout>

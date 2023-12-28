@@ -1,4 +1,4 @@
 
-<x-app-layout class="h-screen">
+<x-guest-layout class="h-screen">
     
-</x-app-layout>
+</x-guest-layout>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Auth;
 
+use \trans;
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +29,14 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email','exists:'.User::class.',email'],
             'password' => ['required', 'string'],
+        ];
+    }
+
+    public function messages(){
+        return [
+            'email.exists' => trans('auth.exists')
         ];
     }
 
@@ -42,7 +50,8 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+            
+            RateLimiter::hit($this->throttleKey(),120);
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
