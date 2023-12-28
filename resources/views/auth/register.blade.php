@@ -47,26 +47,17 @@
             @enderror
         </div>
         <div class="relative z-0 w-full mb-6 group">
-            <input type="password" name="password" id="password"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder="" value=""/>
-            <label for="password"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+            <x-float-text-input isPassword='true' name="password" id="password" value="" placeholder=""/>
+            <x-float-input-label for="password">Password</x-float-input-label>
             @error('password')
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                    class="font-medium">{{$message}}</p>
+             <x-input-error messages="{{ $message }}" />
             @enderror
         </div>
         <div class="relative z-0 w-full mb-6 group 2">
-            <input type="password" name="password_confirmation" id="password_confirmation"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder="" value=""/>
-            <label for="password_confirmation"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
-                password</label>
+            <x-float-text-input isPassword='true' name="password_confirmation" id="password_confirmation" value="" placeholder=""/>
+            <x-float-input-label for="password_confirmation">Confirm password</x-float-input-label>
             @error('password_confirmation')
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                    class="font-medium">{{$message}}</p>
+             <x-input-error messages="{{ $message }}" />
             @enderror
         </div>
         <div class="grid place-items-start mb-6 w-full max-sm:grid-cols-1 max-sm:place-items-center 2xl:mt-12 md:grid-cols-3 md:gap-2">

@@ -38,7 +38,7 @@
                 class="text-sm text-blue-700 hover:underline dark:text-blue-500" type="button">Lost Password?</a>
 
         </div>
-        <x-primary-button class="bg-blue-700 hover:bg-blue-800">
+        <x-primary-button type="submit" class="bg-blue-700 hover:bg-blue-800">
             Login
         </x-primary-button>
 

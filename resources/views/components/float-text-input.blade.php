@@ -1,4 +1,6 @@
-
+@props([
+    'isPassword' => false
+])
 
 @php
     $attribute = [];
@@ -16,5 +18,8 @@
 
 @endphp 
 
-
-<input type="text" {{ $attributes->merge($attribute) }}/>
+@if($isPassword)
+  <input type="password" {{ $attributes->merge($attribute) }}/>
+@else
+  <input type="text" {{ $attributes->merge($attribute) }}/>
+@endif
