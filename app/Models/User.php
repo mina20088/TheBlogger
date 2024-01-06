@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Queue\Jobs\DatabaseJob;
 use Illuminate\Support\Facades\Redis;
 use Laravel\Sanctum\HasApiTokens;
+use Password;
 
 class User extends Authenticatable
 {
@@ -51,6 +52,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function passwords(){
+        return $this->hasMany(Password::class);
+    }
+
 
     public function sendPasswordResetNotification($token)
     {
