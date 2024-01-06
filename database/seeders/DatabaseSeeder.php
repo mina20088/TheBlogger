@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Passwords;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'first_name' => 'mina',
-            'last_name' => 'shaker',
-            'email' => 'minakiroollos@gmail.com',
-            'password'=> "Hecaro1986#"
+        Passwords::factory(1)->create([
+            'user_id' => 1,
+        ]);
+
+        Passwords::factory(1)->create([
+            'user_id' => 2,
         ]);
     }
 }

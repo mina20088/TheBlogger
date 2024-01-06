@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPasswords;
+use App\Models\Passwords;
+use App\Models\User;
+use App\Rules\IsOldPassword;
+use Crypt;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -32,19 +37,20 @@ class NewPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Rules\Password::defaults(),new IsOldPassword($request->email)],
         ]);
-
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
-                ])->save();
+                // $user->forceFill([
+                //     'password' => Hash::make($request->password),
+                //     'remember_token' => Str::random(60),
+                // ])->save();
+
+                ProcessPasswords::dispatch($user,Hash::make($request->password),Str::random(60));
 
                 event(new PasswordReset($user));
             }
