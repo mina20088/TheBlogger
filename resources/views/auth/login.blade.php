@@ -7,7 +7,10 @@
         community of creative writers and thinkers. Log in now to connect with fellow bloggers and be heard.'
         ])
     </div>
-    <form class='space-y-6 max-sm:w-96 sm:w-96' action="{{ route('login') }}" method="post">
+
+    <x-auth-session-status status="{{ session('status') }}"/>
+    
+    <form class='space-y-6 max-xs:w-[19rem] max-sm:w-96 sm:w-96' action="{{ route('login') }}" method="post">
         @csrf
         
         <div>
@@ -34,11 +37,11 @@
                 <x-input-label class="ml-2" value="Remember" for="remember"/>
             </div>
 
-            <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+            <a href="{{ route('password.request') }}" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                 class="text-sm text-blue-700 hover:underline dark:text-blue-500" type="button">Lost Password?</a>
 
         </div>
-        <x-primary-button type="submit" class="bg-blue-700 hover:bg-blue-800">
+        <x-primary-button type="submit" class="max-xs:w-full bg-blue-700 hover:bg-blue-800">
             Login
         </x-primary-button>
 

@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create($validated);
 
-        ProccessRegisteredUserEmail::dispatch($user)->onQueue('email');
+        ProccessRegisteredUserEmail::dispatch($user);
 
         Auth::login($user);
 

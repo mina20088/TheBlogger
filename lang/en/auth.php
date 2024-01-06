@@ -16,6 +16,6 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'exists' => ":attribute is not exists in out database please register"
-
+    'exists' => ":attribute is not exists in out database please register",
+    'session_expires' => "You have been logged out because of :maxIdleTime seconds Of Inactivity",
 ];

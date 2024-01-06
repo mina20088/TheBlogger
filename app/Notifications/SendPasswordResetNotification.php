@@ -7,16 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendRegisterdUserWelcomeEmail extends Notification
+class SendPasswordResetNotification extends Notification
 {
     use Queueable;
+
+    // protected string $token;
+
+    protected string $token;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(string $token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -34,8 +38,10 @@ class SendRegisterdUserWelcomeEmail extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)->subject('Welcome Email')
-                ->view('email.registered_user_welcome_email',['username'=>$notifiable->username]);
+        return (new MailMessage)->subject('Password Reset') 
+            //    ->view('email.reset_password_email',['url'=>$this->url,'user' => $notifiable]);
+            ->view('email.reset_password_email',['token'=> $this->token,'user' => $notifiable]);
     }
-    
+
+
 }

@@ -1,11 +1,8 @@
-<x-guest-layout class="grid grid-cols-1 place-content-center place-items-center h-[53.4rem]">
+<x-guest-layout class="grid grid-cols-1 place-content-center place-items-center h-[53.4rem] max-sm:h-full">
     <div class="max-sm:p-8 sm:p-8">
-        @include('partials.__auth-head',[
-            'title'=>'Regestration',
-            'quote'=>'Join our community of passionate writers and thinkers. Register today to connect with other bloggers, access writing tips and tools, and share your unique voice with the world.'
-        ])
+        @include('partials.__auth-head',['title'=>'Regestration','quote'=>'Join our community of passionate writers and thinkers. Register today to connect with other bloggers, access writing tips and tools, and share your unique voice with the world.'])
     </div>
-    <form class="max-sm:w-[31rem] sm:w-[31rem] xl:w-[60rem]" action="" method="POST">
+    <form class="max-xs:w-[20rem] max-sm:w-[31rem] sm:w-[31rem] md:w-[50rem]  xl:w-[60rem]" action="" method="POST">
         @csrf
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
@@ -60,12 +57,11 @@
              <x-input-error messages="{{ $message }}" />
             @enderror
         </div>
-        <div class="grid place-items-start mb-6 w-full max-sm:grid-cols-1 max-sm:place-items-center 2xl:mt-12 md:grid-cols-3 md:gap-2">
-            <button type="submit"
-                    class="grid text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:col-span-2">
-                Create account
-            </button>
-            <div class=""><span>already registered?</span> <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">login</a></div>
+        <div class="flex align-middle gap-6 max-sm:flex-col max-sm:justify-center">
+            <x-primary-button class="basis-1/2 max-sm:basis-full" type="submit">
+                Register
+            </x-primary-button>
+            <div class="flex items-center basis-1/2 max-sm:justify-center"><span>already registered?</span> <a href="{{ route('login') }}" class="text-blue-700 hover:underline dark:text-blue-500">login</a></div>
         </div>
     </form>
 </x-guest-layout>

@@ -2,7 +2,8 @@
 
 namespace App\Jobs;
 
-use Illuminate\Auth\Events\Registered;
+use App\Models\User;
+use App\Notifications\SendPasswordResetNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,18 +11,28 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ProccessRegisteredUserEmail implements ShouldQueue
+class ProcessPasswordResetEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $user;
 
+    public User $user;
+
+    protected string  $token;
+
+    public string $url;
     /**
      * Create a new job instance.
      */
-    public function __construct($user)
+    public function __construct(User $user, string $url)
     {
+
+        // $this->token = $token;
+
         $this->user = $user;
+
+        $this->url = $url;
+
         $this->onQueue('email');
     }
 
@@ -30,6 +41,6 @@ class ProccessRegisteredUserEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        event(new Registered($this->user));
+        $this->user->notify(new SendPasswordResetNotification($this->url));
     }
 }

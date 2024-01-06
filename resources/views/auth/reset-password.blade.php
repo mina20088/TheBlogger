@@ -1,5 +1,12 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
+<x-guest-layout class="grid place-content-center place-items-center h-[53.7rem]">
+
+    <div class="max-sm:p-8 sm:p-8">
+        @include('partials.__auth-head',[
+        'title'=>'Process Rest Password ',
+        'quote'=>'Hello again! Let\'s take a moment to reset your password and strengthen your security.'
+        ])
+    </div>
+    <form class='space-y-6 max-xs:w-[19rem] max-sm:w-96 sm:w-96' method="POST" action="{{ route('password.store') }}">
         @csrf
 
         <!-- Password Reset Token -->
@@ -8,7 +15,7 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" readonly="readonly" :value="old('email', $request->email)" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -31,7 +38,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
+            <x-primary-button type="submit">
                 {{ __('Reset Password') }}
             </x-primary-button>
         </div>

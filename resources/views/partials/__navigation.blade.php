@@ -22,9 +22,8 @@
                     <x-user-avatar-button class="text-white"/>
                     <!-- Dropdown menu -->
                     <x-user-dropdown>
-                        <x-user-dropdown-items href="#"/>
+                        <x-user-dropdown-items href="{{ route('dashboard') }}"/>
                         <x-user-dropdown-items href="#" content="Profile" />
-                        <x-user-dropdown-items />
                     </x-user-dropdown>
             @endauth
 
@@ -41,7 +40,7 @@
                             <div class="font-medium truncate">{{ auth()->user()->email }}</div>
                         </div>
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
-                            <x-user-dropdown-items href="#"/>
+                            <x-user-dropdown-items href="{{ route('dashboard') }}"/>
                             <x-user-dropdown-items content="Profile" />
                             <x-user-dropdown-items content="Settings" />
                         </ul>
