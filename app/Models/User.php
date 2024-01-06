@@ -5,14 +5,13 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Jobs\ProcessPasswordResetEmail;
-use App\Notifications\SendPasswordResetNotification;
+use App\Models\Passwords;
+use function Illuminate\Events\queueable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Queue\Jobs\DatabaseJob;
-use Illuminate\Support\Facades\Redis;
 use Laravel\Sanctum\HasApiTokens;
-use Password;
 
 class User extends Authenticatable
 {
@@ -53,8 +52,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    protected static function booted()
+    {
+        static::created(queueable(function(User $user){
+            Passwords::create([
+                'user_id' => $user->id,
+                'password' => $user->password
+            ]);
+        })->onQueue('passwords'));
+    }
+
     public function passwords(){
-        return $this->hasMany(Password::class);
+        return $this->hasMany(Passwords::class);
     }
 
 
