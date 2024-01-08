@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Jobs\ProcessPasswords;
-use App\Models\Passwords;
-use App\Models\User;
-use App\Rules\IsOldPassword;
-use Crypt;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use App\Rules\IsOldPassword;
+use Illuminate\Http\Request;
+use App\Jobs\ProcessPasswords;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use App\Jobs\ProcessPasswordRestConfirmationEmail;
+use Illuminate\Support\Facades\Bus;
 
 class NewPasswordController extends Controller
 {
@@ -45,15 +44,18 @@ class NewPasswordController extends Controller
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
-                // $user->forceFill([
-                //     'password' => Hash::make($request->password),
-                //     'remember_token' => Str::random(60),
-                // ])->save();
 
-                ProcessPasswords::dispatch($user,Hash::make($request->password),Str::random(60));
+                ProcessPasswords::dispatch(
+                    $user,
+                    Hash::make($request->password),
+                    Str::random(60)
+                );
+                ProcessPasswordRestConfirmationEmail::dispatchAfterResponse($user);
 
                 event(new PasswordReset($user));
             }
+
+
         );
         
         // If the password was successfully reset, we will redirect the user back to
