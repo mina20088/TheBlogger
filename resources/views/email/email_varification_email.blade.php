@@ -1,5 +1,3 @@
-<div>
-</div>
 <!DOCTYPE html>
 <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
@@ -19,7 +17,7 @@
     td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family: "Segoe UI", sans-serif; mso-line-height-rule: exactly;}
   </style>
   <![endif]-->
-  <title>Reset Password Confirmation</title>
+  <title>Verification Email</title>
   <style>
     h1 {
       font-size: 30px;
@@ -105,10 +103,6 @@
       margin-top: 32px;
       margin-bottom: 32px;
     }
-    a {
-      color: #2563eb;
-      text-decoration: underline;
-    }
     pre {
       margin-bottom: 24px;
       overflow: auto;
@@ -153,7 +147,7 @@
   </style>
 </head>
 <body style="margin: 0; width: 100%; background-color: #fff; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word">
-  <div align="center" role="article" aria-roledescription="email" lang="en" class="sm-px-4" aria-label="Reset Password Confirmation" style="background-color: #fff">
+  <div align="center" role="article" aria-roledescription="email" lang="en" class="sm-px-4" aria-label="Verification Email" style="background-color: #fff">
     <div role="separator" style="line-height: 40px">&zwj;</div>
     <div role="separator" style="line-height: 40px">&zwj;</div>
     <table style="font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif" cellpadding="0" cellspacing="0" role="none">
@@ -167,23 +161,26 @@
             </tr>
             <tr>
               <td class="sm-px-4" style="max-width: 0; padding-left: 32px; padding-right: 32px">
-                <h2 style="font-size: 24px; line-height: 32px; color: #374151">Hi <span style="color: #2563eb">{{ $username }}</span>,</h2>
+                <h2 style="font-size: 24px; line-height: 32px; color: #374151">Hi <span style="color: #2563eb">mina</span>,</h2>
                 <p style="font-size: 16px; line-height: 24px; margin: 12px 0 32px; color: #374151">
-                  We are contacting you to let you know that your password for The Blogger has been changed successfully on {{ $reseted_at }}.
+                  Thank you for signing up for our service. To complete your registration, please verify your email address by clicking the link below:
                 </p>
+                <div style="margin-bottom: 40px; margin-top: 40px; text-align: center">
+                  <a href="{{ $url }}" style="text-decoration: underline; align-items: center; border-radius: 8px; background-color: #1d4ed8; padding: 24px; text-align: center; font-weight: 700; color: #fff; text-decoration-line: none">
+                    verify
+                  </a>
+                </div>
                 <p style="font-size: 16px; line-height: 24px; margin: 12px 0 32px; color: #374151;">
-                  Please remember to keep your password confidential and do not share it with anyone. If you feel your account has been compromised, notify us right away so we can take appropriate security measures.
+                  This link will expire in 48 hours. If you did not sign up for our service, please disregard this email.Verifying your email address allows you to access all features of your account, ensures we can communicate with you effectively, and provides an extra layer of security.
                 </p>
-                <p style="font-size: 16px; line-height: 24px; margin: 12px 0 32px; color: #374151;">
-                  Thank you for using The Blgger! Please let us know if you have any other questions or concerns.
-                </p>
+                <p style="font-size: 16px; line-height: 24px; color: #475569; margin: 0 0 32px;">Please let us know if you have any questions!</p>
+                <p style="font-size: 16px; line-height: 24px; color: #475569; margin: 0 0 32px;"></p>
                 <div>
                   <p style="font-size: 16px; line-height: 24px; margin: 8px 0 32px; color: #4b5563">
                     Thanks, <br>
                     TheBlogger Team
                   </p>
                 </div>
-                <p style="font-size: 16px; line-height: 24px; color: #475569; margin: 0 0 32px;"></p>
                 <p style="font-size: 16px; line-height: 24px; color: #475569; margin: 0 0 32px;"></p>
                 <p style="font-size: 16px; line-height: 24px; color: #475569; margin: 0 0 32px;"></p>
               </td>
