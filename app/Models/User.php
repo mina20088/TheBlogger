@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-use App\Jobs\ProcessPasswordResetEmail;
 use App\Models\Passwords;
-use function Illuminate\Events\queueable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Jobs\ProcessEmailVerification;
+use App\Jobs\ProcessPasswordResetEmail;
 
-class User extends Authenticatable
+use Illuminate\Notifications\Notifiable;
+use function Illuminate\Events\queueable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\SendEmailVerificationNotification;
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -70,6 +71,11 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         ProcessPasswordResetEmail::dispatch($this,$token);  
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        ProcessEmailVerification::dispatch($this);
     }
 
 }
