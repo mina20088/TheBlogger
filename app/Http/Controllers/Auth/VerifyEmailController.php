@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ProcessEmailVerificationConfirmationEmail;
+use App\Models\User;
+use App\Notifications\SendEmailVerificationConfirmation;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -17,10 +20,11 @@ class VerifyEmailController extends Controller
     {
         if(!\Illuminate\Support\Facades\URL::hasValidSignature($request)){
             return redirect()->intended('verification.notice');
-        }
+        }   
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
+            ProcessEmailVerificationConfirmationEmail::dispatch($request->user());
         }
 
         return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');

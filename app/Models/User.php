@@ -13,6 +13,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\SendEmailVerificationNotification;
+use App\Notifications\SendPasswordResetConfirmationNotification;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
