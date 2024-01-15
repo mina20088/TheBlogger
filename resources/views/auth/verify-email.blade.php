@@ -1,8 +1,18 @@
 <x-guest-layout>
-    
+@php
+    $isFailed = session()->has('failed');
+@endphp
 <div class="flex flex-col justify-center items-center h-screen">
         <div class='flex flex-row bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-2xl'>
             <div class="flex flex-col p-4 justify-between leading-normal basis-full">
+                <div class="flex justify-center">
+                    <x-auth-session-status @class([
+                        'p-3', 
+                        'text-lg' ,
+                        'rounded-xl',
+                        'text-red-600'=> $isFailed
+                    ]) status="{{  $isFailed ? session('failed') : session('status') }}"/>
+                </div>
                 <h5 class="mb-2 text-3xl font-bold tracking-tight text-blue-900 text-center">Email Verification Notice</h5>
                 <h3 class="mb-3 font-semibold text-gray-700 text-2xl">Dear {{ Auth::user()->first_name }},</h3>
                 <div class="space-y-8">

@@ -1,5 +1,7 @@
 <x-guest-layout class="grid place-content-center place-items-center h-[53.7rem]">
-
+    @php
+        $isFailed = session()->has('failed');
+    @endphp
     <div class="max-sm:p-8 sm:p-8">
         @include('partials.__auth-head',[
         'title'=>'Login',
@@ -8,7 +10,12 @@
         ])
     </div>
 
-    <x-auth-session-status status="{{ session('status') }}"/>
+    <x-auth-session-status @class([
+                        'p-3', 
+                        'text-lg' ,
+                        'rounded-xl',
+                        'text-red-600'=> $isFailed
+                    ]) status="{{  $isFailed ? session('failed') : session('status') }}"/>
     
     <form class='space-y-6 max-xs:w-[19rem] max-sm:w-96 sm:w-96' action="{{ route('login') }}" method="post">
         @csrf
