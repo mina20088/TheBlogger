@@ -14,8 +14,10 @@ class Authenticate extends Middleware
     protected function redirectTo(Request $request): ?string
     {
 
-        if(!$request->hasValidSignature() && !Auth::check()){
-           redirect()->route('login')->with('failed','you are not authorized to access this page while you are not logged in');
+        if(!$request->hasValidSignature() && !Auth::check() && $request->is('verify-email/*')){
+            redirect()->route('login')->with('failed','Please login to verify');
+        }else{
+            redirect()->route('login')->with('failed','You are not authorized to access this page');
         }
         return null;
         
