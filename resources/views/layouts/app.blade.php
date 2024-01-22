@@ -9,7 +9,7 @@
     @vite(['resources/css/dashboard.css','resources/js/dashboard.js'])    
   </head>
   <body  class=" layout-fluid">
-    <script src="./dist/js/demo-theme.min.js?1684106062"></script>
+    {{-- <script src="./dist/js/demo-theme.min.js?1684106062"></script> --}}
     <div class="page">
       <!-- Sidebar -->
       @include('partials.__dashboard-sidebar')
