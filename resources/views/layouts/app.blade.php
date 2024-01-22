@@ -4,9 +4,10 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard</title>
+    <title>Laravel</title>
     <!-- CSS files -->
-    @vite(['resources/css/dashboard.css','resources/js/dashboard.js'])    
+    @vite(['resources/css/dashboard.css','resources/js/dashboard.js'])
+    @livewireStyles
   </head>
   <body  class=" layout-fluid">
     {{-- <script src="./dist/js/demo-theme.min.js?1684106062"></script> --}}
@@ -23,5 +24,6 @@
         @include('partials.__dashboard-footer')
       </div>
     </div>
+    @livewireScripts
   </body>
 </html>

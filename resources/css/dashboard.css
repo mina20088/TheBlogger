@@ -6,6 +6,7 @@
 @import url('../../node_modules/@tabler/core/dist/css/demo.min.css');
 @import url('https://rsms.me/inter/inter.css');
 
+
 :root {
     --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
