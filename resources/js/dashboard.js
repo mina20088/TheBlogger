@@ -1,18 +1,15 @@
-/** 
- * Libs JS
- */
-import '../../public/dist/libs/apexcharts/dist/apexcharts.min';
-import '../../public/dist/libs/jsvectormap/dist/js/jsvectormap.min';
-import '../../public/dist/libs/jsvectormap/dist/maps/world.js';
-import '../../public/dist/libs/jsvectormap/dist/maps/world-merc.js';
 
-/** 
- * Tabler Core
- */
-import '../../public/dist/js/tabler.min';
-import '../../public/dist/js/demo.min'
+import "@tabler/core/dist/libs/apexcharts/dist/apexcharts";
+import "@tabler/core/dist/libs/jsvectormap/dist/js/jsvectormap";
+import "@tabler/core/dist/libs/jsvectormap/dist/maps/world";
+import "@tabler/core/dist/libs/jsvectormap/dist/maps/world-merc";
+import "@tabler/core/dist/js/tabler";
+import '@tabler/core/dist/js/demo';
+import 'https://kit.fontawesome.com/7824f7faff.js';
+import.meta.glob([
+    '../images/**',
+    '../images/avatars/**'
+])
 
-/** 
- * FontAwsome
- */
-import 'https://kit.fontawesome.com/7824f7faff.js'
+
+
