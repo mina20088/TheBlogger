@@ -8,6 +8,10 @@
     <!-- CSS files -->
     @vite(['resources/css/dashboard.css','resources/js/dashboard.js'])
     @livewireStyles
+
+    @stack('styles')
+
+
   </head>
   <body  class=" layout-fluid">
     {{-- <script src="./dist/js/demo-theme.min.js?1684106062"></script> --}}
@@ -25,5 +29,6 @@
       </div>
     </div>
     @livewireScripts
+    @stack('scripts')
   </body>
 </html>
