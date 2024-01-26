@@ -1,17 +1,19 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import sass from 'sass';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
+                'resources/css/app.scss',
                 'resources/js/app.js',
-                'resources/css/dashboard.css',
+                'resources/css/dashboard.scss',
                 'resources/js/dashboard.js'
             ],
             refresh: true,
         }),
+        
         
     ],
 });

@@ -10,4 +10,5 @@
         @include('partials.__dashboard-user-dropdown')
       </div>
     </div>
+
   </header>
