@@ -2,9 +2,7 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
 
-Alpine.start();
 
 
 import.meta.glob([
@@ -12,3 +10,14 @@ import.meta.glob([
     '../images/avatars/**'
 ])
 import 'flowbite';
+
+
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
+
+
+
+
