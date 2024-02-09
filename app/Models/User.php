@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Passwords;
-use Laravel\Sanctum\HasApiTokens;
 use App\Jobs\ProcessEmailVerification;
 use App\Jobs\ProcessPasswordResetEmail;
+use App\Models\Passwords;
+use App\Notifications\SendEmailVerificationNotification;
 
-use Illuminate\Notifications\Notifiable;
+use App\Notifications\SendPasswordResetConfirmationNotification;
 use function Illuminate\Events\queueable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\SendEmailVerificationNotification;
-use App\Notifications\SendPasswordResetConfirmationNotification;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -54,6 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
 
     protected static function booted()
     {

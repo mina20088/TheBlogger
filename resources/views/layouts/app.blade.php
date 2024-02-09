@@ -13,9 +13,10 @@
     <title>Tailwind CSS Dashboard Stacked Layout - Flowbite</title>
 
     @vite(['resources/css/app.css','resources/js/app.js'])
-   
+
 </head>
-<body  class="bg-gray-50 dark:bg-gray-800">
+
+<body class="bg-gray-50 dark:bg-gray-800">
 
     {{-- Header --}}
     @include('partials.__dashboard_header')
@@ -24,10 +25,17 @@
 
         @include('partials.__dashboard_sidebar')
 
-        <x-dashboard.sidebar.backdrop/>
+        <x-dashboard.sidebar.backdrop />
+
+        <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+            <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900 min-h-screen">
+                {{$slot}}
+            </div>
+        </div>
 
     </div>
-    
+
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
