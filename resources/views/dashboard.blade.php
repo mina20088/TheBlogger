@@ -1,17 +1,18 @@
 <x-app-layout>
-    <div
-        class="flex ml-4 space-x-6 justify-start  bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-        <div class="max-w-lg flex flex-col rounded-lg bg-gradient-to-br from-slate-700 to-zinc-500 p-16 dark:bg-white">
-            <a href="" class="text-white text-xl dark:text-black">Sessions</a>
-            <p class="text-center text-white dark:text-black">0</p>
+    <div class="grid grid-cols-6 gap-[50%] ml-4 max-sm:grid-cols-1">
+        <div class="w-[57rem]  rounded-lg bg-gradient-to-r from-teal-200 to-teal-500 dark:bg-white h-48 max-sm:w-full">
+            <div class="grid grid-rows-2 justify-center align-middle h-full">
+                <a href="" class=" mt-7 text-center text-white text-xl dark:text-black">Sessions</a>
+                <p class="text-center text-white dark:text-black">0</p>
+            </div>
         </div>
 
-        <div class="max-w-lg flex flex-col rounded-lg bg-gradient-to-br from-slate-700 to-zinc-500 p-16 dark:bg-white">
-            <a href="" class="text-white text-xl dark:text-black">Posts</a>
-            <p class=" text-center text-white dark:text-black">0</p>
+        <div class="w-[57rem] rounded-lg bg-gradient-to-br from-slate-700 to-zinc-500 dark:bg-white h-48 max-sm:w-full">
+            <div class="grid grid-rows-2 h-full">
+                <a href="" class="mt-7 text-center text-white text-xl dark:text-black">Posts</a>
+                <p class="text-center text-white dark:text-black">0</p>
+            </div>
         </div>
     </div>
-
-
 
 </x-app-layout>
