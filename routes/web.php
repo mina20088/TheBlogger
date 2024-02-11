@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Dashboard;
+use App\Livewire\Session\Show;
+use App\Models\Session;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -19,9 +22,14 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/',[HomeController::class,'index'])->name('Home.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/dashboard',Dashboard::class)->name('dashboard');
+    Route::get('/sessions',Show::class)->name('sessions');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard',['sessions'=> Session::all()]);
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/{user:username}',[ProfileController::class,'index'])->name('profile.index');

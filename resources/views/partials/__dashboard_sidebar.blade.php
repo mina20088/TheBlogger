@@ -8,8 +8,13 @@
    
                     {{-- dashboard --}}
                     <li>
-                        <x-dashboard.sidebar.item class="items-start" path="{{ route('dashboard') }}">
+                        <x-dashboard.sidebar.item class="items-start" path="{{ route('dashboard') }}" wire:navigate>
                             <x-s-v-g-s.dashboard class="w-6 h-6" />
+                        </x-dashboard.sidebar.item>
+                    </li>
+                    <li>
+                        <x-dashboard.sidebar.item  class="items-start" content="Sessions" path="{{ route('sessions') }}" wire:navigate>
+                            <x-s-v-g-s.session class="w-6 h-6"/>
                         </x-dashboard.sidebar.item>
                     </li>
 
