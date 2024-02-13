@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Session;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class SessionCheck
@@ -31,6 +31,8 @@ class SessionCheck
             $request->session()->invalidate();
 
             $request->session()->regenerateToken();
+
+            Session::where('user_id', auth()->user()->id)->update('user_id', 'Null');
 
             return redirect()->route('login')->with('status',trans('auth.session_expires',['maxIdleTime'=>$maxIdleTime]));
 

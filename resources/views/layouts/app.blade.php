@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#ffffff">
     <title>Tailwind CSS Dashboard Stacked Layout - Flowbite</title>
 
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
@@ -27,13 +27,20 @@
 
         <x-dashboard.sidebar.backdrop />
 
-        <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-            <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900 min-h-screen">
-                {{$slot}}
-            </div>
+
+        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+            </main>
+                <div class="px-4 pt-6">
+                    {{ $slot }}
+                </div>
+            </main>
         </div>
 
+
+
+
     </div>
+
 
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
