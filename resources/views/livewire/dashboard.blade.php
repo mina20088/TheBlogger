@@ -6,12 +6,13 @@
                 <h2 class="text-xl font-semibold mb-4">Sessions</h2>
                 <div class="flex items-center">
                     <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mr-4">
-                        <livewire:sessioncount :$session_count/>
+                        {{-- :$session_count/ --}}
+                        <livewire:sessioncount :$session_count />
                     </div>
                     <p class="text-gray-600">Total Sessions</p>
                 </div>
             </div>
-        </a>  
+        </a>
         <a href="#" class="mx-auto mt-8 w-full">
             <div class="bg-white shadow-md rounded-lg p-6">
                 <h2 class="text-xl font-semibold mb-4">Posts</h2>
@@ -22,6 +23,6 @@
                     <p class="text-gray-600">Total Sessions</p>
                 </div>
             </div>
-        </a>    
+        </a>
     </div>
 </div>
