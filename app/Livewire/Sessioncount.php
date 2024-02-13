@@ -12,7 +12,7 @@ class Sessioncount extends Component
 {
 
     #[Reactive]
-    public  $session_count;
+    public  $session_count = 0;
 
     public function render()
     {
