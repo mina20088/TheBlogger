@@ -32,8 +32,6 @@ class SessionCheck
 
             $request->session()->regenerateToken();
 
-            Session::where('user_id', auth()->user()->id)->update('user_id', 'Null');
-
             return redirect()->route('login')->with('status',trans('auth.session_expires',['maxIdleTime'=>$maxIdleTime]));
 
         }

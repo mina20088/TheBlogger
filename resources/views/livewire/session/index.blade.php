@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" wire:poll.30s>
     <div
         class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white dark:bg-gray-900">
         <div>
@@ -63,19 +63,22 @@
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    id_address
+                    session_id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    browser
+                    user_id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    device
+                    ip_address
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    platform
+                    distribution
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    is_current_device
+                    operating system
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Browser/version
                 </th>
                 <th scope="col" class="px-6 py-3">
                     last_active
@@ -97,34 +100,18 @@
                 </td>
                 <td scope="row" class="px-6 py-4">
                     <div class="ps-3">
-                        <div class="text-base font-semibold">{{ $sessions->ip_address }}</div>
+                        <div class="text-base font-semibold">{{ $sessions->id }}</div>
                     </div>
                 </td>
-                <td class="px-6 py-4">{{ $sessions->device['browser'] }}</td>
+                <td class="px-6 py-4">{{ $sessions->user_id }}</td>
+                <td class="px-6 py-4">{{ $sessions->ip_address }}</td>
+                <td class="px-6 py-4">{{ $sessions->user_agent[2] }}</td>
+                <td class="px-6 py-4">{{ $sessions->user_agent[3] }}</td>
+                <td class="px-6 py-4">{{ $sessions->user_agent[7] }}</td>
+                <td class="px-6 py-4">{{ $sessions->last_activity->diffForHumans()}}</td>
                 <td class="px-6 py-4">
-                    @isset($sessions->device['desktop'])
-                    desktop
-                    @endisset
-                    @isset($sessions->device['mobile'])
-                    mobile
-                    @endisset
-                </td>
-                <td class="px-6 py-4">
-                    {{ $sessions->device['platform'] }}
-                </td>
-                <td class="px-6 py-4">
-                    @if($sessions->is_current_device)
-                    Yes
-                    @else
-                    No
-                    @endif
-                </td>
-                <td class="px-6 py-4">
-                    {{ $sessions->last_active }}
-                </td>
-                <td class="px-6 py-4">
-                    <form>
-                        <button type="button"
+                    <form wire:submit.prevent='delete({{ session()->getId() }})'>
+                        <button type="submit"
                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Close</button>
                     </form>
                 </td>
