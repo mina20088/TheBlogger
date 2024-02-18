@@ -19,6 +19,7 @@
 <body class="font-sans antialiased">
 
     <header>
+      
         @include('partials.__navigation')
     </header>
 

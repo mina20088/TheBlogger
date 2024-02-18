@@ -1,6 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" wire:poll.30s>
     <div
         class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white dark:bg-gray-900">
+
         <div>
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction"
                 class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -52,6 +53,7 @@
                 placeholder="Search for users">
         </div>
     </div>
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -72,13 +74,17 @@
                     ip_address
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    operating system
+
+                </th>
+                <th scope="col" class="px-6 py-3">
                     distribution
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    operating system
+                    Browser/version
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Browser/version
+                    current
                 </th>
                 <th scope="col" class="px-6 py-3">
                     last_active
@@ -89,8 +95,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($this->sessions as $sessions )
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+            @foreach ($sessions as $session )
+            <tr wire:key="{{ $session->id }}"
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
                         <input id="checkbox-table-search-1" type="checkbox"
@@ -100,23 +108,22 @@
                 </td>
                 <td scope="row" class="px-6 py-4">
                     <div class="ps-3">
-                        <div class="text-base font-semibold">{{ $sessions->id }}</div>
+                        <div class="text-base font-semibold">{{ $session->id }}</div>
                     </div>
                 </td>
-                <td class="px-6 py-4">{{ $sessions->user_id }}</td>
-                <td class="px-6 py-4">{{ $sessions->ip_address }}</td>
-                <td class="px-6 py-4">{{ $sessions->user_agent[2] }}</td>
-                <td class="px-6 py-4">{{ $sessions->user_agent[3] }}</td>
-                <td class="px-6 py-4">{{ $sessions->user_agent[7] }}</td>
-                <td class="px-6 py-4">{{ $sessions->last_activity->diffForHumans()}}</td>
+                <td class="px-6 py-4">{{ $session->user_id }}</td>
+                <td class="px-6 py-4">{{ $session->ip_address }}</td>
+                <td class="px-6 py-4">{{ $session->user_agent[2] }}</td>
+                <td class="px-6 py-4">{{ $session->user_agent[3] }}</td>
+                <td class="px-6 py-4">{{ $session->user_agent[7] }}</td>
+                <td class="px-6 py-4">{{ $session->id === session()->getId() ? 'yes' : 'no' }}</td>
+                <td class="px-6 py-4">{{ $session->last_activity->diffForHumans()}}</td>
                 <td class="px-6 py-4">
-                    <form wire:submit.prevent='delete({{ session()->getId() }})'>
-                        <button type="submit"
-                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Close</button>
-                    </form>
+                    <livewire:session.delete session_id="{{ $session->id }}" key="{{ $session->id }}" />
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <x-auth-session-status status="{{ session('message') }}" />
 </div>
