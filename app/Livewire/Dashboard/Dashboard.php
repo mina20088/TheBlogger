@@ -3,8 +3,8 @@
 namespace App\Livewire\Dashboard;
 
 
-use Cjmellor\BrowserSessions\Facades\BrowserSessions;
-
+use App\Models\Session;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -12,7 +12,7 @@ class Dashboard extends Component
     public function render()
     {
         return view('livewire.dashboard.dashboard',[
-            'session_count'=>count(BrowserSessions::sessions())
+            'count'=>count(Session::where('user_id',Auth::user()->id)->get())
         ]);
     }
 }

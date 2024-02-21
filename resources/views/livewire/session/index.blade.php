@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" wire:poll.30s>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
     <div
         class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white dark:bg-gray-900">
 
@@ -57,6 +57,11 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+                <td colspan="10">
+                    <x-auth-session-status status="{{ session('message') }}" />
+                </td>
+            </tr>
+            <tr>
                 <th scope="col" class="p-4">
                     <div class="flex items-center">
                         <input id="checkbox-all-search" type="checkbox"
@@ -97,8 +102,8 @@
         <tbody>
 
             @foreach ($sessions as $session )
-            <tr wire:key="{{ $session->id }}"
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+            <tr wire:key='{{ $session->number_id }}'>
                 <td class="w-4 p-4">
                     <div class="flex items-center">
                         <input id="checkbox-table-search-1" type="checkbox"
@@ -119,11 +124,11 @@
                 <td class="px-6 py-4">{{ $session->id === session()->getId() ? 'yes' : 'no' }}</td>
                 <td class="px-6 py-4">{{ $session->last_activity->diffForHumans()}}</td>
                 <td class="px-6 py-4">
-                    <livewire:session.delete session_id="{{ $session->id }}" key="{{ $session->id }}" />
+                    <livewire:session.delete session_id="{{ $session->id }}" :key='$session->number_id' />
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <x-auth-session-status status="{{ session('message') }}" />
+
 </div>

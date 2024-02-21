@@ -4,7 +4,6 @@ namespace App\Livewire\Session;
 
 use App\Models\Session;
 use Auth;
-use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -12,26 +11,19 @@ use Livewire\Component;
 class Index extends Component
 {
 
-    #[Locked]
-    public $sessions;
-
-    public function mount(){
-        $this->sessions = Session::whereBelongsTo(Auth::user())->get();
+    #[On('message')]
+    public function message(string $message){
+        session()->flash('message', $message);
     }
 
-
-    #[On('status')]
-    public function message($message){
-        Session()->flash('message', $message);
-    }
-
-    #[On('delete')]
-    public function update_sessions(){
-        $this->sessions = Session::whereBelongsTo(Auth::user())->get();
+    #[On('re_render')]
+    public function re_render(){
+        
+        $this->render();
     }
 
     public function render()
     {
-        return view('livewire..session.index');
+        return view('livewire..session.index',['sessions'=>Session::whereBelongsTo(Auth::user())->get()]);
     }
 }

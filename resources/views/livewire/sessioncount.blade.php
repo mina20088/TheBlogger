@@ -1,3 +1,3 @@
-<div wire:poll.1s>
+<div wire:poll.30s>
     <span class="text-2xl">{{ $session_count }}</span>
 </div>

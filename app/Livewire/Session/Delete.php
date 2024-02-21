@@ -23,17 +23,12 @@ class Delete extends Component
     }
 
     public function delete(){
-
         if($this->current()){
-            $this->dispatch('status','you can`t close your current session')->to(Index::class);
+            $this->dispatch('message','you can`t close your own session');
         }else{
             Session::destroy($this->session_id);
-
-            $this->dispatch('delete');
+            $this->dispatch('re_render');
         }
-
-
-        
     }
 
     public function render()
