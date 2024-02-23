@@ -3,13 +3,21 @@
 namespace App\Livewire\Session;
 
 use App\Models\Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class Index extends Component
 {
+
+    
+    public bool $checked;
+
+    public function checkAll($check){
+        $this->checked = $check;
+    }
 
     #[On('message')]
     public function message(string $message){
