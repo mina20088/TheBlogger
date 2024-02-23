@@ -16,7 +16,7 @@ class Session extends Model
     protected $casts = [
         'id' => 'string',   
         'last_activity' => 'datetime',
-         'user_agent' => 'array'
+        'user_agent' => 'array'
     ];
     
     public function user(){
