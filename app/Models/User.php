@@ -71,6 +71,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Passwords::class);
     }
 
+    public function sessions(){
+        return $this->hasMany(Session::class);
+    }
+
 
     public function sendPasswordResetNotification($token)
     {
