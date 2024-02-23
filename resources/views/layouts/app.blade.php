@@ -10,7 +10,7 @@
     <meta name="generator" content="Hugo 0.122.0">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-    <title>Tailwind CSS Dashboard Stacked Layout - Flowbite</title>
+    <title></title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
