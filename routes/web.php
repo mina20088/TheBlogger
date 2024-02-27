@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Dashboard\Dashboard;
+use App\Livewire\Dashboard;
+use App\Livewire\Session;
 use App\Livewire\Session\Index;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -23,7 +25,7 @@ Route::get('/',[HomeController::class,'index'])->name('Home.index');
 
 Route::middleware(['auth','verified'])->group(function(){
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
-    Route::get('/sessions',Index::class)->name('sessions');
+    Route::get('/sessions',Session::class)->name('sessions');
 });
 
 // Route::get('/dashboard', function () {
