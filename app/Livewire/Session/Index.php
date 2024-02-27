@@ -13,11 +13,7 @@ class Index extends Component
 {
 
     
-    public bool $checked;
-
-    public function checkAll($check){
-        $this->checked = $check;
-    }
+    public bool $select ;
 
     #[On('message')]
     public function message(string $message){

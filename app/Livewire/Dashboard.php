@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Dashboard;
+namespace App\Livewire;
 
 
 use App\Models\Session;
@@ -11,7 +11,7 @@ class Dashboard extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.dashboard',[
+        return view('livewire.dashboard',[
             'count'=>count(Session::where('user_id',Auth::user()->id)->get())
         ]);
     }

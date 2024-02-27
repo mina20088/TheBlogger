@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" x-data="{selected:false}">
     <div
         class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white dark:bg-gray-900">
 
@@ -63,13 +63,12 @@
             </tr>
             <tr>
                 <th scope="col" class="p-4">
-                    <div class="flex items-center" x-data="{ checked:'false' }">
-
-                        <input x-on:change='$wire.checkAll(checked)' id="checkbox-all-search" type="checkbox"
-                            x-model="checked"
+                    <div class="flex items-center">
+                        <input id="checkbox-all-search" type="checkbox" wire:model.live='select'
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
 
                         <label for="checkbox-all-search" class="sr-only">checkbox</label>
+
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -106,32 +105,32 @@
 
             @foreach ($sessions as $session )
 
-            <tr wire:key='{{ $session->number_id }}'>
-                <td class="w-4 p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <td scope="row" class="px-6 py-4">
-                    <div class="ps-3">
-                        <div class="text-base font-semibold">{{ $session->id }}</div>
-                    </div>
-                </td>
-                <td class="px-6 py-4">{{ $session->user_id }}</td>
-                <td class="px-6 py-4">{{ $session->ip_address }}</td>
-                <td class="px-6 py-4">{{ $session->user_agent[2] }}</td>
-                <td class="px-6 py-4">{{ $session->user_agent[3] }}</td>
-                <td class="px-6 py-4">{{ $session->user_agent[7] }}</td>
-                <td class="px-6 py-4">{{ $session->id === session()->getId() ? 'yes' : 'no' }}</td>
-                <td class="px-6 py-4">{{ $session->last_activity->diffForHumans()}}</td>
-                <td class="px-6 py-4">
-                    <livewire:session.delete session_id="{{ $session->id }}" :key='$session->number_id' />
-                </td>
-            </tr>
+                <tr wire:key='{{ $session->number_id }}'>
+                    <td class="w-4 p-4">
+                        <div class="flex items-center">
+                            <input id="checkbox-table-search-1" type="checkbox" @checked('selected')
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                        </div>
+                    </td>
+                    <td scope="row" class="px-6 py-4">
+                        <div class="ps-3">
+                            <div class="text-base font-semibold">{{ $session->id }}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">{{ $session->user_id }}</td>
+                    <td class="px-6 py-4">{{ $session->ip_address }}</td>
+                    <td class="px-6 py-4">{{ $session->user_agent[2] }}</td>
+                    <td class="px-6 py-4">{{ $session->user_agent[3] }}</td>
+                    <td class="px-6 py-4">{{ $session->user_agent[7] }}</td>
+                    <td class="px-6 py-4">{{ $session->id === session()->getId() ? 'yes' : 'no' }}</td>
+                    <td class="px-6 py-4">{{ $session->last_activity->diffForHumans()}}</td>
+                    <td class="px-6 py-4">
+                        <livewire:session.delete session_id="{{ $session->id }}" :key='$session->number_id' />
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
-
+    @dump($select)
 </div>
