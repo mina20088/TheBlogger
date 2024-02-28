@@ -6,7 +6,7 @@
                 <h2 class="text-xl font-semibold mb-4">Sessions</h2>
                 <div class="flex items-center">
                     <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mr-4" wire:poll.30s >
-                        <livewire:session.count :$count />
+                        <span class="text-2xl">{{ $this->sessionsCount }}</span>
                     </div>
                     <p class="text-gray-600">Total Sessions</p>
                 </div>

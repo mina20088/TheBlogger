@@ -13,6 +13,8 @@ class Session extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'number_id';
+
     protected $casts = [
         'id' => 'string',   
         'last_activity' => 'datetime',
