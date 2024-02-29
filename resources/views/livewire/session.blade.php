@@ -1,15 +1,11 @@
 <div>
-
-
     <div class="flex">
         @if(count($checked) !== 0)
-
-        <button type="submit" wire:click.prevent="deleteSelected"
+        <button type="submit" wire:click.prevent="selectedSessions"
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete({{
             count($checked) }})</button>
         @endif
     </div>
-
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" <thead
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -83,10 +79,12 @@
                 <td class="px-6 py-4">{{ $session->id === session()->getId() ? 'yes' : 'no' }}</td>
                 <td class="px-6 py-4">{{ $session->last_activity->diffForHumans()}}</td>
                 <td class="px-6 py-4">
-                    <form wire:submit.prevent='delete("{{ $session->id  }}")'>
-                        <button type="submit"
-                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Close</button>
-                    </form>
+
+                    <button type="submit"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        wire:click='selectedSessions("{{ $session->number_id  }}")'>
+                        Close
+                    </button>
                 </td>
             </tr>
             @endforeach
@@ -97,3 +95,4 @@
 
     {{ $this->sessions->links() }}
 </div>
+

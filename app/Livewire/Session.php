@@ -3,11 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Session as Sessions;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Locked;
-use Livewire\Attributes\Reactive;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Session extends Component
@@ -24,13 +22,31 @@ class Session extends Component
         return $this->sessions->id;
     }
 
+    
+    public function selectedSessions($id = 0){
+
+        if(isset($this->checked)){
+            $this->dispatch('confirm',[
+                'title' => 'are you sure',
+                'html' => 'you want to delete this sessions',
+                'checked' => $this->checked
+            ]);
+        }
+        if($id > 0){
+            $this->dispatch('confirm',[
+                'title' => 'are you sure',
+                'html' => 'you want to delete this sessions',
+                'checked' => $id
+            ]);
+        }
+
+    }
+
+    #[On('deleteSelected')]
     public function delete($id){
         Sessions::destroy($id);
     }
 
-    public function deleteSelected(){
-        Sessions::destroy($this->checked);
-    }
 
     public function render()
     {
